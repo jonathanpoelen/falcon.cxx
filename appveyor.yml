@@ -27,8 +27,8 @@ before_build:
 
 build_script:
  - cd c:\projects\falcon.cxx\build
- - msbuild /target:all_tests /p:Configuration=Debug;Platform=x64 falcon.cxx.sln
- - msbuild /target:all_tests /p:Configuration=Release;Platform=x64 falcon.cxx.sln
+ - msbuild /p:Configuration=Debug;Platform=x64 falcon.cxx.sln
+ - msbuild /p:Configuration=Release;Platform=x64 falcon.cxx.sln
 
 test_script:
  - cd c:\projects\falcon.cxx\build
