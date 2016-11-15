@@ -1,0 +1,36 @@
+version: 1.0.{build}
+
+os: Visual Studio 2015
+
+matrix:
+  fast_finish: true
+
+platform:
+  #- x64
+
+#configuration:
+  #- Debug
+  #- Release
+
+clone_folder: c:\projects\falcon.cxx
+
+build:
+  parallel: false
+  project: c:\projects\falcon.cxx\build\falcon.cxx.sln
+  verbosity: minimal
+
+before_build:
+  - cd c:\projects\falcon.cxx
+  - md build
+  - cd build
+  - cmake -G"Visual Studio 14 2015 Win64" ..
+
+build_script:
+ - cd c:\projects\falcon.cxx\build
+ - msbuild /target:all_tests /p:Configuration=Debug;Platform=x64 falcon.cxx.sln
+ - msbuild /target:all_tests /p:Configuration=Release;Platform=x64 falcon.cxx.sln
+
+test_script:
+ - cd c:\projects\falcon.cxx\build
+ - cmd: ctest -C Debug -VV
+ - cmd: ctest -C Release -VV

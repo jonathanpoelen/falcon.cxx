@@ -1,0 +1,74 @@
+if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+  add_definitions(
+    -Wall
+    -Wextra
+    -Weffc++
+    -Wswitch-enum
+    -Wlogical-op
+    -Wundef
+    -Wcast-align
+    -Wformat-security
+    -Wunreachable-code
+    -Wformat=2
+    -Wfloat-equal
+    -Wshadow
+    -Wpointer-arith
+    -Wconversion
+    -Wmissing-declarations
+    -Wmissing-noreturn
+    -Wmissing-format-attribute
+    -Wpacked
+    -Wredundant-decls
+    -Winline
+    -Wdouble-promotion
+    -Wcast-qual
+    -pedantic
+    -Wmissing-include-dirs
+    -Warray-bounds=2
+    -Wold-style-cast
+    -Woverloaded-virtual
+    -Wnon-virtual-dtor
+    -Wzero-as-null-pointer-constant
+    -Wsuggest-override
+#    -fno-exceptions
+#    -fno-check-new
+#    -fno-common
+#    -fno-threadsafe-statics
+#    -fvisibility=hidden
+#    -fvisibility-inlines-hidden
+
+#    -Werror
+    -pedantic
+
+#    -Wfatal-errors
+
+    -std=c++14
+  )
+
+  if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    add_definitions(
+      -Wno-mismatched-tags
+    )
+  elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+    add_definitions(
+      -Wtrampolines
+      -Wdouble-promotion
+    )
+  endif()
+
+  if (DEFINED ASAN)
+    add_definitions(
+      -fsanitize=address
+      -fsanitize=leak   
+      -fsanitize=undefined
+    )
+    #link_libraries(-lasan)
+  endif()
+
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_GLIBCXX_DEBUG")
+
+#elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Intel")
+#  # using Intel C++
+#elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+#  # using Visual Studio C++
+endif()
