@@ -11,4 +11,4 @@
 [travis.badge]: https://travis-ci.org/jonathanpoelen/falcon.cxx.svg?branch=master
 
 [appveyor.url]: https://ci.appveyor.com/project/jonathanpoelen/falcon-cxx
-[appveyor.badge]: https://ci.appveyor.com/api/projects/status/github/jonathanpoelen/falcon-cxx
+[appveyor.badge]: https://ci.appveyor.com/api/projects/status/github/jonathanpoelen/falcon.cxx
