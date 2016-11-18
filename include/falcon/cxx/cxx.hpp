@@ -611,21 +611,29 @@ SOFTWARE.
   noexcept(noexcept(decltype(expr)(expr))) -> \
   decltype(expr)
 
+# define FALCON_RETURN_NOEXCEPT(expr)      \
+  noexcept(noexcept(decltype(expr)(expr))) \
+  { return expr; }
+
 # define FALCON_EXPAND
 # define FALCON_IF_IN_IDE_PARSER(expr1, expr2) expr1
 #else
 # define FALCON_DECLTYPE_AUTO_RETURN(...) \
   -> decltype(__VA_ARGS__)                \
-  { return (__VA_ARGS__); }
+  { return __VA_ARGS__; }
 
 # define FALCON_DECLTYPE_AUTO_RETURN_NOEXCEPT(...)          \
   noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) -> \
   decltype(__VA_ARGS__)                                     \
-  { return (__VA_ARGS__); }
+  { return __VA_ARGS__; }
 
 # define FALCON_DECLTYPE_NOEXCEPT(...)                      \
   noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) -> \
   decltype(__VA_ARGS__)
+
+# define FALCON_RETURN_NOEXCEPT(...)                     \
+  noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) \
+  { return __VA_ARGS__; }
 
 # define FALCON_EXPAND ...
 # define FALCON_IF_IN_IDE_PARSER(expr1, expr2) expr2
