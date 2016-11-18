@@ -648,15 +648,23 @@ SOFTWARE.
 
 // Inline variable
 #if FALCON_CXX_HAS_FEATURE_INLINE_VARIABLES
+# define FALCON_INLINE_VARIABLE(type, name) \
+  inline constexpr type name{}
+# define FALCON_SCOPED_INLINE_VARIABLE(type, name) \
+  inline namespace {                               \
+    inline constexpr type name{};                  \
+  }
+#else
 namespace falcon { namespace detail {
   template<class T> struct static_const { static constexpr T value{}; };
   template<class T> constexpr T static_const<T>::value;
 } }
 # define FALCON_INLINE_VARIABLE(type, name)                            \
-  constexpr auto & name = ::ranges::detail::static_const<type>::value; \
-#else
-# define FALCON_INLINE_VARIABLE(type, name) \
-  inline constexpr type name{};
+  constexpr auto & name = ::falcon::detail::static_const<type>::value
+# define FALCON_SCOPED_INLINE_VARIABLE(type, name) \
+  inline namespace {                               \
+    constexpr auto & name = ::falcon::detail::static_const<type>::value; \
+  }
 #endif
 
 
