@@ -31,7 +31,7 @@ SOFTWARE.
 
 
 // std::experimental::any
-#if __cplusplus >= 201402L && defined __has_include && if __has_include(<experimental/any>)
+#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/any>)
 #  include <experimental/any>
 #  if defined(__cpp_lib_experimental_any) && __cpp_lib_experimental_any >= 201411
 #    define FALCON_CXX_LIB_EXPERIMENTAL_ANY 1

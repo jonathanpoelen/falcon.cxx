@@ -30,7 +30,7 @@ SOFTWARE.
 #pragma once
 
 
-#if __cplusplus >= 201402L && defined __has_include && if __has_include(<experimental/type_traits>)
+#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/type_traits>)
 #  include <experimental/type_traits>
 
 // std::experimental::invocation_type

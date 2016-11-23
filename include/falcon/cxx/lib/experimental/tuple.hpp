@@ -31,7 +31,7 @@ SOFTWARE.
 
 
 // std::experimental::apply
-#if __cplusplus >= 201402L && defined __has_include && if __has_include(<experimental/tuple>)
+#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/tuple>)
 #  include <experimental/tuple>
 #  if defined(__cpp_lib_experimental_apply) && __cpp_lib_experimental_apply >= 201402
 #    define FALCON_CXX_LIB_EXPERIMENTAL_APPLY 1

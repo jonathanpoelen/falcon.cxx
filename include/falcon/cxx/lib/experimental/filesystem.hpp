@@ -31,7 +31,7 @@ SOFTWARE.
 
 
 // std::experimental::filesystem
-#if __cplusplus >= 201402L && defined __has_include && if __has_include(<experimental/filesystem>)
+#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/filesystem>)
 #  include <experimental/filesystem>
 #  if defined(__cpp_lib_experimental_filesystem) && __cpp_lib_experimental_filesystem >= 201406
 #    define FALCON_CXX_LIB_EXPERIMENTAL_FILESYSTEM 1

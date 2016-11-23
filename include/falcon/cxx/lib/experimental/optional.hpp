@@ -31,9 +31,9 @@ SOFTWARE.
 
 
 // std::experimental::optional
-#if __cplusplus >= 201402L && defined __has_include && if __has_include(<experimental/optional>)
+#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/optional>)
 #  include <experimental/optional>
-#  if defined(defined(__cpp_lib_experimental_optional)) && __cpp_lib_experimental_optional >= 201411
+#  if defined(__cpp_lib_experimental_optional) && __cpp_lib_experimental_optional >= 201411
 #    define FALCON_CXX_LIB_EXPERIMENTAL_OPTIONAL 1
 #  endif
 #endif
