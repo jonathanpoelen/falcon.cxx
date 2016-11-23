@@ -41,9 +41,9 @@ SOFTWARE.
 
 // Compile-time integer sequences
 #if defined(__cpp_lib_integer_sequence) && __cpp_lib_integer_sequence >= 201304
-#  define FALCON_STD_INTEGER_SEQUENCE 1
+#  define FALCON_CXX_LIB_INTEGER_SEQUENCE 1
 #else
-#  define FALCON_STD_INTEGER_SEQUENCE 0
+#  define FALCON_CXX_LIB_INTEGER_SEQUENCE 0
 #endif
 
 // std::tuple_element_t

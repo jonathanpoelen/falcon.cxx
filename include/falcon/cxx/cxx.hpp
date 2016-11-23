@@ -27,6 +27,8 @@ SOFTWARE.
 * \brief     c++11, 14, 17 utility macros
 */
 
+#pragma once
+
 
 #define FALCON_CXX_STD_11 201103
 #define FALCON_CXX_STD_14 201402
@@ -600,6 +602,10 @@ SOFTWARE.
 
 #define FALCON_CXX_RESTRICT __restrict__
 
+#ifndef FALCON_PP_NIL
+# define FALCON_PP_NIL
+#endif
+
 #if defined(IN_IDE_PARSER)
 # define FALCON_DECLTYPE_AUTO_RETURN(expr) \
   -> decltype(expr)                        \
@@ -618,8 +624,8 @@ SOFTWARE.
   noexcept(noexcept(decltype(expr)(expr))) \
   { return expr; }
 
-# define FALCON_EXPAND
-# define FALCON_IF_IN_IDE_PARSER(expr1, expr2) expr1
+# define FALCON_CXX_EXPAND
+# define FALCON_IN_IDE_PARSER_CONDITIONAL(expr1, expr2) expr1
 #else
 # define FALCON_DECLTYPE_AUTO_RETURN(...) \
   -> decltype(__VA_ARGS__)                \
@@ -638,8 +644,8 @@ SOFTWARE.
   noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) \
   { return __VA_ARGS__; }
 
-# define FALCON_EXPAND ...
-# define FALCON_IF_IN_IDE_PARSER(expr1, expr2) expr2
+# define FALCON_CXX_EXPAND ...
+# define FALCON_IN_IDE_PARSER_CONDITIONAL(expr1, expr2) expr2
 #endif
 
 

@@ -34,7 +34,7 @@ SOFTWARE.
 
 // Adding heterogeneous comparison lookup to associative containers
 #if defined(__cpp_lib_generic_associative_lookup) && __cpp_lib_generic_associative_lookup >= 201304
-#  define FALCON_STD_GENERIC_ASSOCIATIVE_LOOKUP 1
+#  define FALCON_CXX_LIB_GENERIC_ASSOCIATIVE_LOOKUP 1
 #else
-#  define FALCON_STD_GENERIC_ASSOCIATIVE_LOOKUP 0
+#  define FALCON_CXX_LIB_GENERIC_ASSOCIATIVE_LOOKUP 0
 #endif

@@ -34,7 +34,7 @@ SOFTWARE.
 
 // std::make_unique
 #if defined(__cpp_lib_make_unique) && __cpp_lib_make_unique >= 201304
-#  define FALCON_STD_MAKE_UNIQUE 1
+#  define FALCON_CXX_LIB_MAKE_UNIQUE 1
 #else
-#  define FALCON_STD_MAKE_UNIQUE 0
+#  define FALCON_CXX_LIB_MAKE_UNIQUE 0
 #endif

@@ -35,17 +35,17 @@ SOFTWARE.
 
 // std::integral_constant::operator()
 #  if defined(__cpp_lib_integral_constant_callable) && __cpp_lib_integral_constant_callable >= 201304
-#    define FALCON_STD_INTEGRAL_CONSTANT_CALLABLE 1
+#    define FALCON_CXX_LIB_INTEGRAL_CONSTANT_CALLABLE 1
 #  endif
 
 // std::is_final
 #  if defined(__cpp_lib_is_final) && __cpp_lib_is_final >= 201402
-#    define FALCON_STD_IS_FINAL 1
+#    define FALCON_CXX_LIB_IS_FINAL 1
 #  endif
 
 // std::is_null_pointer
 #  if defined(__cpp_lib_is_null_pointer) && __cpp_lib_is_null_pointer >= 201309
-#    define FALCON_STD_IS_NULL_POINTER 1
+#    define FALCON_CXX_LIB_IS_NULL_POINTER 1
 #  endif
 
 // std::*_t
@@ -61,16 +61,16 @@ SOFTWARE.
 #endif
 
 
-#ifndef FALCON_STD_INTEGRAL_CONSTANT_CALLABLE
-#  define FALCON_STD_INTEGRAL_CONSTANT_CALLABLE 0
+#ifndef FALCON_CXX_LIB_INTEGRAL_CONSTANT_CALLABLE
+#  define FALCON_CXX_LIB_INTEGRAL_CONSTANT_CALLABLE 0
 #endif
 
-#ifndef FALCON_STD_IS_FINAL
-#  define FALCON_STD_IS_FINAL 0
+#ifndef FALCON_CXX_LIB_IS_FINAL
+#  define FALCON_CXX_LIB_IS_FINAL 0
 #endif
 
-#ifndef FALCON_STD_IS_NULL_POINTER
-#  define FALCON_STD_IS_NULL_POINTER 0
+#ifndef FALCON_CXX_LIB_IS_NULL_POINTER
+#  define FALCON_CXX_LIB_IS_NULL_POINTER 0
 #endif
 
 #ifndef FALCON_CXX_LIB_HAS_TRANSFORMATION_TRAIT_ALIASES

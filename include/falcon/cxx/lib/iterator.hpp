@@ -34,14 +34,14 @@ SOFTWARE.
 
 // std::make_reverse_iterator
 #if defined(__cpp_lib_make_reverse_iterator) && __cpp_lib_make_reverse_iterator >= 201402
-#  define FALCON_STD_MAKE_REVERSE_ITERATOR 1
+#  define FALCON_CXX_LIB_MAKE_REVERSE_ITERATOR 1
 #else
-#  define FALCON_STD_MAKE_REVERSE_ITERATOR 0
+#  define FALCON_CXX_LIB_MAKE_REVERSE_ITERATOR 0
 #endif
 
 // Null ForwardIterators
 #if defined(__cpp_lib_null_iterators) && __cpp_lib_null_iterators >= 201304
-#  define FALCON_STD_NULL_ITERATORS 1
+#  define FALCON_CXX_LIB_NULL_ITERATORS 1
 #else
-#  define FALCON_STD_NULL_ITERATORS 0
+#  define FALCON_CXX_LIB_NULL_ITERATORS 0
 #endif
