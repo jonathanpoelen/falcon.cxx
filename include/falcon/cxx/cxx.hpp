@@ -39,19 +39,19 @@ SOFTWARE.
 // C++98 Features
 //@{
 
-#ifndef FALCON_CXX_HAS_FEATURE_RTTI
+#ifndef FALCON_CXX_RTTI
 # if defined(__cpp_rtti) && __cpp_rtti >= 199711
-#  define FALCON_CXX_HAS_FEATURE_RTTI 1
+#  define FALCON_CXX_RTTI 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_RTTI 0
+#  define FALCON_CXX_RTTI 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_HAS_FEATURE_EXCEPTIONS
+#ifndef FALCON_CXX_EXCEPTIONS
 # if defined(__cpp_exceptions) && __cpp_exceptions >= 199711
-#  define FALCON_CXX_HAS_FEATURE_EXCEPTIONS 1
+#  define FALCON_CXX_EXCEPTIONS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_EXCEPTIONS 0
+#  define FALCON_CXX_EXCEPTIONS 0
 # endif
 #endif
 
@@ -61,11 +61,11 @@ SOFTWARE.
 // C++11 Features
 //@{
 
-#ifndef FALCON_CXX_HAS_FEATURE_STATIC_ASSERT
+#ifndef FALCON_CXX_STATIC_ASSERT
 # if __cplusplus < FALCON_CXX_STD_11
-#  define FALCON_CXX_HAS_FEATURE_STATIC_ASSERT 0
+#  define FALCON_CXX_STATIC_ASSERT 0
 # else
-#  define FALCON_CXX_HAS_FEATURE_STATIC_ASSERT 1
+#  define FALCON_CXX_STATIC_ASSERT 1
 # endif
 #endif
 
@@ -76,102 +76,102 @@ SOFTWARE.
 //@{
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3472.pdf
-#ifndef FALCON_CXX_HAS_FEATURE_BINARY_LITERALS
+#ifndef FALCON_CXX_BINARY_LITERALS
 # if defined(__cpp_binary_literals) && __cpp_binary_literals >= 201304
-#  define FALCON_CXX_HAS_FEATURE_BINARY_LITERALS 1
+#  define FALCON_CXX_BINARY_LITERALS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_BINARY_LITERALS 0
+#  define FALCON_CXX_BINARY_LITERALS 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/N3638.html
-#ifndef FALCON_CXX_HAS_FEATURE_DECLTYPE_AUTO
+#ifndef FALCON_CXX_DECLTYPE_AUTO
 # if defined(__cpp_decltype_auto) && __cpp_decltype_auto >= 201304
-#  define FALCON_CXX_HAS_FEATURE_DECLTYPE_AUTO 1
+#  define FALCON_CXX_DECLTYPE_AUTO 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_DECLTYPE_AUTO 0
+#  define FALCON_CXX_DECLTYPE_AUTO 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/N3638.html
-#ifndef FALCON_CXX_HAS_FEATURE_RETURN_TYPE_DEDUCTION
+#ifndef FALCON_CXX_RETURN_TYPE_DEDUCTION
 # if defined(__cpp_return_type_deduction) && __cpp_return_type_deduction >= 201304
-#  define FALCON_CXX_HAS_FEATURE_RETURN_TYPE_DEDUCTION 1
+#  define FALCON_CXX_RETURN_TYPE_DEDUCTION 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_RETURN_TYPE_DEDUCTION 0
+#  define FALCON_CXX_RETURN_TYPE_DEDUCTION 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/N3648.html
-#ifndef FALCON_CXX_HAS_FEATURE_INIT_CAPTURES
+#ifndef FALCON_CXX_INIT_CAPTURES
 # if defined(__cpp_init_captures) && __cpp_init_captures >= 201304
-#  define FALCON_CXX_HAS_FEATURE_INIT_CAPTURES 1
+#  define FALCON_CXX_INIT_CAPTURES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_INIT_CAPTURES 0
+#  define FALCON_CXX_INIT_CAPTURES 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/N3649.html
-#ifndef FALCON_CXX_HAS_FEATURE_GENERIC_LAMBDAS
+#ifndef FALCON_CXX_GENERIC_LAMBDAS
 # if defined(__cpp_generic_lambdas) && __cpp_generic_lambdas >= 201304
-#  define FALCON_CXX_HAS_FEATURE_GENERIC_LAMBDAS 1
+#  define FALCON_CXX_GENERIC_LAMBDAS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_GENERIC_LAMBDAS 0
+#  define FALCON_CXX_GENERIC_LAMBDAS 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/N3651.pdf
-#ifndef FALCON_CXX_HAS_FEATURE_VARIABLE_TEMPLATES
+#ifndef FALCON_CXX_VARIABLE_TEMPLATES
 # if defined(__cpp_variable_templates) && __cpp_variable_templates >= 201304
-#  define FALCON_CXX_HAS_FEATURE_VARIABLE_TEMPLATES 1
+#  define FALCON_CXX_VARIABLE_TEMPLATES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_VARIABLE_TEMPLATES 0
+#  define FALCON_CXX_VARIABLE_TEMPLATES 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/N3652.html
-#ifndef FALCON_CXX_HAS_FEATURE_RELAXED_CONSTEXPR
+#ifndef FALCON_CXX_RELAXED_CONSTEXPR
 # if defined(__cpp_constexpr) && __cpp_constexpr >= 201304
-#  define FALCON_CXX_HAS_FEATURE_RELAXED_CONSTEXPR 1
+#  define FALCON_CXX_RELAXED_CONSTEXPR 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_RELAXED_CONSTEXPR 0
+#  define FALCON_CXX_RELAXED_CONSTEXPR 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3653.html
-#ifndef FALCON_CXX_FEATURE_HAS_AGGREGATE_INITIALIZATION
+#ifndef FALCON_CXX_AGGREGATE_INITIALIZATION
 # if defined(__cpp_aggregate_nsdmi) && __cpp_aggregate_nsdmi >= 201304
-#  define FALCON_CXX_FEATURE_HAS_AGGREGATE_INITIALIZATION 1
+#  define FALCON_CXX_AGGREGATE_INITIALIZATION 1
 # else
-#  define FALCON_CXX_FEATURE_HAS_AGGREGATE_INITIALIZATION 0
+#  define FALCON_CXX_AGGREGATE_INITIALIZATION 0
 # endif
 #endif
 
 // https://isocpp.org/files/papers/n3778.html
-#ifndef FALCON_CXX_HAS_FEATURE_SIZED_DEALLOCATION
+#ifndef FALCON_CXX_SIZED_DEALLOCATION
 # if defined(__cpp_sized_deallocation) && __cpp_sized_deallocation >= 201309
-#  define FALCON_CXX_HAS_FEATURE_SIZED_DEALLOCATION 1
+#  define FALCON_CXX_SIZED_DEALLOCATION 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_SIZED_DEALLOCATION 0
+#  define FALCON_CXX_SIZED_DEALLOCATION 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3781.pdf
-#ifndef FALCON_CXX_HAS_FEATURE_DIGIT_SEPARATOR
+#ifndef FALCON_CXX_DIGIT_SEPARATOR
 # if defined(__cpp_digit_separator) && __cpp_digit_separator >= 201309
-#  define FALCON_CXX_HAS_FEATURE_DIGIT_SEPARATOR 1
+#  define FALCON_CXX_DIGIT_SEPARATOR 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_DIGIT_SEPARATOR 0
+#  define FALCON_CXX_DIGIT_SEPARATOR 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3639.html
 // (Removed from the standard)
-#ifndef FALCON_CXX_HAS_FEATURE_RUNTIME_ARRAYS
+#ifndef FALCON_CXX_RUNTIME_ARRAYS
 # if defined(__cpp_runtime_arrays) && __cpp_runtime_arrays >= 198712
-#  define FALCON_CXX_HAS_FEATURE_RUNTIME_ARRAYS 1
+#  define FALCON_CXX_RUNTIME_ARRAYS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_RUNTIME_ARRAYS 0
+#  define FALCON_CXX_RUNTIME_ARRAYS 0
 # endif
 #endif
 
@@ -182,191 +182,191 @@ SOFTWARE.
 //@{
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4267.html
-#ifndef FALCON_CXX_HAS_FEATURE_UNICODE_CHARACTERS
+#ifndef FALCON_CXX_UNICODE_CHARACTERS
 # if defined(__cpp_unicode_characters) && __cpp_unicode_characters >= 201411
-#  define FALCON_CXX_HAS_FEATURE_UNICODE_CHARACTERS 1
+#  define FALCON_CXX_UNICODE_CHARACTERS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_UNICODE_CHARACTERS 0
+#  define FALCON_CXX_UNICODE_CHARACTERS 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html
-#ifndef FALCON_CXX_HAS_FEATURE_FOLD_EXPRESSIONS
+#ifndef FALCON_CXX_FOLD_EXPRESSIONS
 # if defined(__cpp_fold_expressions) && __cpp_fold_expressions >= 201411
-#  define FALCON_CXX_HAS_FEATURE_FOLD_EXPRESSIONS 1
+#  define FALCON_CXX_FOLD_EXPRESSIONS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_FOLD_EXPRESSIONS 0
+#  define FALCON_CXX_FOLD_EXPRESSIONS 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html
-#ifndef FALCON_CXX_HAS_FEATURE_NAMESPACE_ATTRIBUTES
+#ifndef FALCON_CXX_NAMESPACE_ATTRIBUTES
 # if defined(__cpp_namespace_attributes) && __cpp_namespace_attributes >= 201411
-#  define FALCON_CXX_HAS_FEATURE_NAMESPACE_ATTRIBUTES 1
+#  define FALCON_CXX_NAMESPACE_ATTRIBUTES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_NAMESPACE_ATTRIBUTES 0
+#  define FALCON_CXX_NAMESPACE_ATTRIBUTES 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html
-#ifndef FALCON_CXX_HAS_FEATURE_ENUMERATOR_ATTRIBUTES
+#ifndef FALCON_CXX_ENUMERATOR_ATTRIBUTES
 # if defined(__cpp_enumerator_attributes) && __cpp_enumerator_attributes >= 201411
-#  define FALCON_CXX_HAS_FEATURE_ENUMERATOR_ATTRIBUTES 1
+#  define FALCON_CXX_ENUMERATOR_ATTRIBUTES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_ENUMERATOR_ATTRIBUTES 0
+#  define FALCON_CXX_ENUMERATOR_ATTRIBUTES 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4230.html
-#ifndef FALCON_CXX_HAS_FEATURE_NESTED_NAMESPACE_DEFINITIONS
+#ifndef FALCON_CXX_NESTED_NAMESPACE_DEFINITIONS
 # if defined(__cpp_nested_namespace_definitions) && __cpp_nested_namespace_definitions >= 201411
-#  define FALCON_CXX_HAS_FEATURE_NESTED_NAMESPACE_DEFINITIONS 1
+#  define FALCON_CXX_NESTED_NAMESPACE_DEFINITIONS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_NESTED_NAMESPACE_DEFINITIONS 0
+#  define FALCON_CXX_NESTED_NAMESPACE_DEFINITIONS 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html
-#ifndef FALCON_CXX_HAS_FEATURE_NONTYPE_TEMPLATE_ARGS
+#ifndef FALCON_CXX_NONTYPE_TEMPLATE_ARGS
 # if defined(__cpp_nontype_template_args) && __cpp_nontype_template_args >= 201411
-#  define FALCON_CXX_HAS_FEATURE_NONTYPE_TEMPLATE_ARGS 1
+#  define FALCON_CXX_NONTYPE_TEMPLATE_ARGS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_NONTYPE_TEMPLATE_ARGS 0
+#  define FALCON_CXX_NONTYPE_TEMPLATE_ARGS 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n3928.html
-#ifndef FALCON_CXX_HAS_FEATURE_STATIC_ASSERT_MSG
+#ifndef FALCON_CXX_STATIC_ASSERT_MSG
 # if defined(__cpp_static_assert) && __cpp_static_assert >= 201411
-#  define FALCON_CXX_HAS_FEATURE_STATIC_ASSERT_MSG 1
+#  define FALCON_CXX_STATIC_ASSERT_MSG 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_STATIC_ASSERT_MSG 0
+#  define FALCON_CXX_STATIC_ASSERT_MSG 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html
-#ifndef FALCON_CXX_HAS_FEATURE_AGGREGATE_BASES
+#ifndef FALCON_CXX_AGGREGATE_BASES
 # if defined(__cpp_aggregate_bases) && __cpp_aggregate_bases >= 201603
-#  define FALCON_CXX_HAS_FEATURE_AGGREGATE_BASES 1
+#  define FALCON_CXX_AGGREGATE_BASES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_AGGREGATE_BASES 0
+#  define FALCON_CXX_AGGREGATE_BASES 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0170r1.pdf
-#ifndef FALCON_CXX_HAS_FEATURE_CONSTEXPR_LAMBDA
+#ifndef FALCON_CXX_CONSTEXPR_LAMBDA
 # if defined(__cpp_constexpr) && __cpp_constexpr >= 201603
-#  define FALCON_CXX_HAS_FEATURE_CONSTEXPR_LAMBDA 1
+#  define FALCON_CXX_CONSTEXPR_LAMBDA 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_CONSTEXPR_LAMBDA 0
+#  define FALCON_CXX_CONSTEXPR_LAMBDA 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0036r0.pdf
-#ifndef FALCON_CXX_HAS_FEATURE_UNARY_FOLD_EXPRESSIONS
+#ifndef FALCON_CXX_UNARY_FOLD_EXPRESSIONS
 # if defined(__cpp_fold_expressions) && __cpp_fold_expressions >= 201603
-#  define FALCON_CXX_HAS_FEATURE_UNARY_FOLD_EXPRESSIONS 1
+#  define FALCON_CXX_UNARY_FOLD_EXPRESSIONS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_UNARY_FOLD_EXPRESSIONS 0
+#  define FALCON_CXX_UNARY_FOLD_EXPRESSIONS 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0184r0.html
-#ifndef FALCON_CXX_HAS_FEATURE_RANGE_BASED_FOR
+#ifndef FALCON_CXX_RANGE_BASED_FOR
 # if defined(__cpp_range_based_for) && __cpp_range_based_for >= 201603
-#  define FALCON_CXX_HAS_FEATURE_RANGE_BASED_FOR 1
+#  define FALCON_CXX_RANGE_BASED_FOR 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_RANGE_BASED_FOR 0
+#  define FALCON_CXX_RANGE_BASED_FOR 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html
-#ifndef FALCON_CXX_HAS_FEATURE_CAPTURE_STAR_THIS
+#ifndef FALCON_CXX_CAPTURE_STAR_THIS
 # if defined(__cpp_capture_star_this) && __cpp_capture_star_this >= 201603
-#  define FALCON_CXX_HAS_FEATURE_CAPTURE_STAR_THIS 1
+#  define FALCON_CXX_CAPTURE_STAR_THIS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_CAPTURE_STAR_THIS 0
+#  define FALCON_CXX_CAPTURE_STAR_THIS 0
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0245r1.html
-#ifndef FALCON_CXX_HAS_FEATURE_HEX_FLOAT
+#ifndef FALCON_CXX_HEX_FLOAT
 # if defined(__cpp_hex_float) && __cpp_hex_float >= 201603
-#  define FALCON_CXX_HAS_FEATURE_HEX_FLOAT 1
+#  define FALCON_CXX_HEX_FLOAT 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_HEX_FLOAT 0
+#  define FALCON_CXX_HEX_FLOAT 0
 # endif
 #endif
 
 // http://wg21.link/p0035
-#ifndef FALCON_CXX_HAS_FEATURE_ALIGNED_NEW
+#ifndef FALCON_CXX_ALIGNED_NEW
 # if defined(__cpp_aligned_new) && __cpp_aligned_new >= 201606
-#  define FALCON_CXX_HAS_FEATURE_ALIGNED_NEW 1
+#  define FALCON_CXX_ALIGNED_NEW 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_ALIGNED_NEW 0
+#  define FALCON_CXX_ALIGNED_NEW 0
 # endif
 #endif
 
 // http://wg21.link/p0292
-#ifndef FALCON_CXX_HAS_FEATURE_IF_CONSTEXPR
+#ifndef FALCON_CXX_IF_CONSTEXPR
 # if defined(__cpp_if_constexpr) && __cpp_if_constexpr >= 201606
-#  define FALCON_CXX_HAS_FEATURE_IF_CONSTEXPR 1
+#  define FALCON_CXX_IF_CONSTEXPR 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_IF_CONSTEXPR 0
+#  define FALCON_CXX_IF_CONSTEXPR 0
 # endif
 #endif
 
 // http://wg21.link/p0091
-#ifndef FALCON_CXX_HAS_FEATURE_DEDUCTION_GUIDES
+#ifndef FALCON_CXX_DEDUCTION_GUIDES
 # if defined(__cpp_deduction_guides) && __cpp_deduction_guides >= 201606
-#  define FALCON_CXX_HAS_FEATURE_DEDUCTION_GUIDES 1
+#  define FALCON_CXX_DEDUCTION_GUIDES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_DEDUCTION_GUIDES 0
+#  define FALCON_CXX_DEDUCTION_GUIDES 0
 # endif
 #endif
 
 // http://wg21.link/p0127
-#ifndef FALCON_CXX_HAS_FEATURE_TEMPLATE_AUTO
+#ifndef FALCON_CXX_TEMPLATE_AUTO
 # if defined(__cpp_template_auto) && __cpp_template_auto >= 201606
-#  define FALCON_CXX_HAS_FEATURE_TEMPLATE_AUTO 1
+#  define FALCON_CXX_TEMPLATE_AUTO 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_TEMPLATE_AUTO 0
+#  define FALCON_CXX_TEMPLATE_AUTO 0
 # endif
 #endif
 
 // http://wg21.link/p0217
-#ifndef FALCON_CXX_HAS_FEATURE_STRUCTURED_BINDINGS
+#ifndef FALCON_CXX_STRUCTURED_BINDINGS
 # if defined(__cpp_structured_bindings) && __cpp_structured_bindings >= 201606
-#  define FALCON_CXX_HAS_FEATURE_STRUCTURED_BINDINGS 1
+#  define FALCON_CXX_STRUCTURED_BINDINGS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_STRUCTURED_BINDINGS 0
+#  define FALCON_CXX_STRUCTURED_BINDINGS 0
 # endif
 #endif
 
 // http://wg21.link/p0012
-#ifndef FALCON_CXX_HAS_FEATURE_NOEXCEPT_FUNCTION_TYPE
+#ifndef FALCON_CXX_NOEXCEPT_FUNCTION_TYPE
 # if defined(__cpp_noexcept_function_type) && __cpp_noexcept_function_type >= 201510
-#  define FALCON_CXX_HAS_FEATURE_NOEXCEPT_FUNCTION_TYPE 1
+#  define FALCON_CXX_NOEXCEPT_FUNCTION_TYPE 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_NOEXCEPT_FUNCTION_TYPE 0
+#  define FALCON_CXX_NOEXCEPT_FUNCTION_TYPE 0
 # endif
 #endif
 
 // http://wg21.link/p0136
-#ifndef FALCON_CXX_HAS_FEATURE_INHERITING_CONSTRUCTORS
+#ifndef FALCON_CXX_INHERITING_CONSTRUCTORS
 # if defined(__cpp_inheriting_constructors) && __cpp_inheriting_constructors >= 201511
-#  define FALCON_CXX_HAS_FEATURE_INHERITING_CONSTRUCTORS 1
+#  define FALCON_CXX_INHERITING_CONSTRUCTORS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_INHERITING_CONSTRUCTORS 0
+#  define FALCON_CXX_INHERITING_CONSTRUCTORS 0
 # endif
 #endif
 
 // http://wg21.link/p0386r2
-#ifndef FALCON_CXX_HAS_FEATURE_INLINE_VARIABLES
+#ifndef FALCON_CXX_INLINE_VARIABLES
 # if defined(__cpp_inline_variables) && __cpp_inline_variables >= 201606
-#  define FALCON_CXX_HAS_FEATURE_INLINE_VARIABLES 1
+#  define FALCON_CXX_INLINE_VARIABLES 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_INLINE_VARIABLES 0
+#  define FALCON_CXX_INLINE_VARIABLES 0
 # endif
 #endif
 
@@ -375,21 +375,21 @@ SOFTWARE.
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4377.pdf
 // -fconcepts
-#ifndef FALCON_CXX_HAS_FEATURE_CONCEPTS
+#ifndef FALCON_CXX_CONCEPTS
 # if defined(__cpp_concepts) && __cpp_concepts >= 201507
-#  define FALCON_CXX_HAS_FEATURE_CONCEPTS 1
+#  define FALCON_CXX_CONCEPTS 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_CONCEPTS 0
+#  define FALCON_CXX_CONCEPTS 0
 # endif
 #endif
 
 // http://www.open-std.org/Jtc1/sc22/wg21/docs/papers/2015/n4514.pdf
 // -fgnu-tm
-#ifndef FALCON_CXX_HAS_FEATURE_TRANSACTIONAL_MEMORY
+#ifndef FALCON_CXX_TRANSACTIONAL_MEMORY
 # if defined(__cpp_transactional_memory) && __cpp_transactional_memory >= 201505
-#  define FALCON_CXX_HAS_FEATURE_TRANSACTIONAL_MEMORY 1
+#  define FALCON_CXX_TRANSACTIONAL_MEMORY 1
 # else
-#  define FALCON_CXX_HAS_FEATURE_TRANSACTIONAL_MEMORY 0
+#  define FALCON_CXX_TRANSACTIONAL_MEMORY 0
 # endif
 #endif
 
@@ -415,26 +415,29 @@ SOFTWARE.
 # endif
 #endif
 
-#ifndef FALCON_DEPRECATED
+#ifndef FALCON_CXX_ATTRIBUTE_DEPRECATED
 # if defined(FALCON_DISABLE_DEPRECATED_WARNINGS)
 #  if FALCON_CXX_HAS_ATTRIBUTE_DEPRECATED
-#   define FALCON_DEPRECATED(msg) [[deprecated]]
-#   define FALCON_DEPRECATED_MSG(msg) [[deprecated(msg)]]
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED(msg) [[deprecated]]
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) [[deprecated(msg)]]
 #  elif defined(__clang__) || defined(__GNUC__)
-#   define FALCON_DEPRECATED __attribute__((deprecated("deprecated")))
-#   define FALCON_DEPRECATED_MSG(msg) __attribute__((deprecated(msg)))
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED __attribute__((deprecated("deprecated")))
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) __attribute__((deprecated(msg)))
 #  elif defined(_MSC_VER)
-#   define FALCON_DEPRECATED __declspec(deprecated("deprecated"))
-#   define FALCON_DEPRECATED_MSG(msg) __declspec(deprecated(msg))
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED __declspec(deprecated("deprecated"))
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) __declspec(deprecated(msg))
 #  else
-#   define FALCON_DEPRECATED
-#   define FALCON_DEPRECATED_MSG(msg)
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED
+#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
 #  endif
 # else
-#  define FALCON_DEPRECATED
-#  define FALCON_DEPRECATED_MSG(msg)
+#  define FALCON_CXX_ATTRIBUTE_DEPRECATED
+#  define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
 # endif
 #endif
+
+#define FALCON_DEPRECATED          FALCON_CXX_ATTRIBUTE_DEPRECATED
+#define FALCON_DEPRECATED_MSG(msg) FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0188r1.pdf
 #ifndef FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH
@@ -445,13 +448,13 @@ SOFTWARE.
 # endif
 #endif
 
-#ifndef FALCON_FALLTHROUGH
+#ifndef FALCON_CXX_ATTRIBUTE_FALLTHROUGH
 # if FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH
-#  define FALCON_FALLTHROUGH [[fallthrough]]
+#  define FALCON_CXX_ATTRIBUTE_FALLTHROUGH [[fallthrough]]
 # elif defined(__clang__)
-#  define FALCON_FALLTHROUGH [[clang::fallthrough]]
+#  define FALCON_CXX_ATTRIBUTE_FALLTHROUGH [[clang::fallthrough]]
 # else
-#  define FALCON_FALLTHROUGH void(0)
+#  define FALCON_CXX_ATTRIBUTE_FALLTHROUGH void(0)
 # endif
 #endif
 
@@ -464,15 +467,15 @@ SOFTWARE.
 # endif
 #endif
 
-#ifndef FALCON_NODISCARD
+#ifndef FALCON_CXX_ATTRIBUTE_NODISCARD
 # if FALCON_CXX_HAS_ATTRIBUTE_NODISCARD
-#  define FALCON_NODISCARD [[nodiscard]]
+#  define FALCON_CXX_ATTRIBUTE_NODISCARD [[nodiscard]]
 # elif defined(__clang__) || defined(__GNUC__)
-#  define FALCON_NODISCARD __attribute__((warn_unused_result))
+#  define FALCON_CXX_ATTRIBUTE_NODISCARD __attribute__((warn_unused_result))
 # elif defined(_MSC_VER)
-#  define FALCON_NODISCARD _Check_return_
+#  define FALCON_CXX_ATTRIBUTE_NODISCARD _Check_return_
 # else
-#  define FALCON_NODISCARD
+#  define FALCON_CXX_ATTRIBUTE_NODISCARD
 # endif
 #endif
 
@@ -485,13 +488,13 @@ SOFTWARE.
 # endif
 #endif
 
-#ifndef FALCON_MAYBE_UNUSED
+#ifndef FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED
 # if FALCON_CXX_HAS_ATTRIBUTE_MAYBE_UNUSED
-#  define FALCON_MAYBE_UNUSED [[maybe_unused]]
+#  define FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED [[maybe_unused]]
 # elif defined(__clang__) || defined(__GNUC__)
-#  define FALCON_MAYBE_UNUSED __attribute__((unused))
+#  define FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED __attribute__((unused))
 # else
-#  define FALCON_MAYBE_UNUSED
+#  define FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED
 # endif
 #endif
 
@@ -504,15 +507,15 @@ SOFTWARE.
 # endif
 #endif
 
-#ifndef FALCON_NORETURN
+#ifndef FALCON_CXX_ATTRIBUTE_NORETURN
 # if FALCON_CXX_HAS_ATTRIBUTE_NORETURN
-#  define FALCON_NORETURN [[noreturn]]
+#  define FALCON_CXX_ATTRIBUTE_NORETURN [[noreturn]]
 # elif defined(__clang__) || defined(__GNUC__)
-#  define FALCON_NORETURN __attribute__((noreturn))
+#  define FALCON_CXX_ATTRIBUTE_NORETURN __attribute__((noreturn))
 # elif defined(_MSC_VER)
-#  define FALCON_NORETURN __declspec(noreturn)
+#  define FALCON_CXX_ATTRIBUTE_NORETURN __declspec(noreturn)
 # else
-#  define FALCON_NORETURN
+#  define FALCON_CXX_ATTRIBUTE_NORETURN
 # endif
 #endif
 
@@ -525,11 +528,11 @@ SOFTWARE.
 # endif
 #endif
 
-#ifndef FALCON_CARRIES_DEPENDENCY
+#ifndef FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY
 # if FALCON_CXX_HAS_ATTRIBUTE_CARRIES_DEPENDENCY
-#  define FALCON_CARRIES_DEPENDENCY [[carries_dependency]]
+#  define FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY [[carries_dependency]]
 # else
-#  define FALCON_CARRIES_DEPENDENCY
+#  define FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY
 # endif
 #endif
 
@@ -589,7 +592,7 @@ SOFTWARE.
 # define FALCON_CXX14_CONSTEXPR inline
 #endif
 
-#if FALCON_CXX_HAS_FEATURE_STATIC_ASSERT_MSG
+#if FALCON_CXX_STATIC_ASSERT_MSG
 # define FALCON_STATIC_ASSERT(expr) static_assert(expr)
 #else
 # define FALCON_STATIC_ASSERT(expr) static_assert(expr, #expr)
@@ -655,7 +658,7 @@ SOFTWARE.
 
 
 // Inline variable
-#if FALCON_CXX_HAS_FEATURE_INLINE_VARIABLES
+#if FALCON_CXX_INLINE_VARIABLES
 # define FALCON_INLINE_VARIABLE(type, name) \
   inline constexpr type name{}
 # define FALCON_SCOPED_INLINE_VARIABLE(type, name) \
