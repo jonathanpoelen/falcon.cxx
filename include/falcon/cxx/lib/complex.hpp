@@ -34,7 +34,7 @@ SOFTWARE.
 
 // ""i, ""if, ""il
 #if defined(__cpp_lib_complex_udls) && __cpp_lib_complex_udls >= 201309
-#  define FALCON_CXX_LIB_HAS_COMPLEX_UDLS 1
+#  define FALCON_CXX_LIB_COMPLEX_UDLS 1
 #else
-#  define FALCON_CXX_LIB_HAS_COMPLEX_UDLS 0
+#  define FALCON_CXX_LIB_COMPLEX_UDLS 0
 #endif

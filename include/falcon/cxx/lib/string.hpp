@@ -34,7 +34,7 @@ SOFTWARE.
 
 // ""s
 #if defined(__cpp_lib_string_udls) && __cpp_lib_string_udls >= 201304
-#  define FALCON_CXX_LIB_HAS_STRING_UDLS 1
+#  define FALCON_CXX_LIB_STRING_UDLS 1
 #else
-#  define FALCON_CXX_LIB_HAS_STRING_UDLS 0
+#  define FALCON_CXX_LIB_STRING_UDLS 0
 #endif

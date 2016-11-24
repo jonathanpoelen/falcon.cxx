@@ -34,10 +34,10 @@ SOFTWARE.
 #if __cplusplus >= 201402L
 #  include <shared_mutex>
 #  if defined(__cpp_lib_shared_timed_mutex) && __cpp_lib_shared_timed_mutex >= 201402
-#    define FALCON_CXX_LIB_HAS_SHARED_TIMED_MUTEX 1
+#    define FALCON_CXX_LIB_SHARED_TIMED_MUTEX 1
 #  endif
 #endif
 
-#ifndef FALCON_CXX_LIB_HAS_SHARED_TIMED_MUTEX
-#  define FALCON_CXX_LIB_HAS_SHARED_TIMED_MUTEX 0
+#ifndef FALCON_CXX_LIB_SHARED_TIMED_MUTEX
+#  define FALCON_CXX_LIB_SHARED_TIMED_MUTEX 0
 #endif

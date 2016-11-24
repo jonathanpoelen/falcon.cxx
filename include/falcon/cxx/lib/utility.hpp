@@ -48,14 +48,14 @@ SOFTWARE.
 
 // std::tuple_element_t
 #if defined __cpp_lib_tuple_element_t && __cpp_lib_tuple_element_t >= 201402
-#  define FALCON_CXX_LIB_HAS_TUPLE_ELEMENT_T 1
+#  define FALCON_CXX_LIB_TUPLE_ELEMENT_T 1
 #else
-#  define FALCON_CXX_LIB_HAS_TUPLE_ELEMENT_T 0
+#  define FALCON_CXX_LIB_TUPLE_ELEMENT_T 0
 #endif
 
 // std::get<T>
 #if defined __cpp_lib_tuples_by_type && __cpp_lib_tuples_by_type >= 201304
-#  define FALCON_CXX_LIB_HAS_TUPLES_BY_TYPE 1
+#  define FALCON_CXX_LIB_TUPLES_BY_TYPE 1
 #else
-#  define FALCON_CXX_LIB_HAS_TUPLES_BY_TYPE 0
+#  define FALCON_CXX_LIB_TUPLES_BY_TYPE 0
 #endif

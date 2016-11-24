@@ -34,10 +34,10 @@ SOFTWARE.
 #if __cplusplus >= 201103
 #  include <chrono>
 #  if defined(__cpp_lib_chrono_udls) && __cpp_lib_chrono_udls >= 201304
-#    define FALCON_CXX_LIB_HAS_CHRONO_UDLS 1
+#    define FALCON_CXX_LIB_CHRONO_UDLS 1
 #  endif
 #endif
 
-#ifndef FALCON_CXX_LIB_HAS_CHRONO_UDLS
-#  define FALCON_CXX_LIB_HAS_CHRONO_UDLS 0
+#ifndef FALCON_CXX_LIB_CHRONO_UDLS
+#  define FALCON_CXX_LIB_CHRONO_UDLS 0
 #endif

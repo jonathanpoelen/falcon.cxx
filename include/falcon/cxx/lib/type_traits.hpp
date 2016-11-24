@@ -50,12 +50,12 @@ SOFTWARE.
 
 // std::*_t
 #  if defined(__cpp_lib_transformation_trait_aliases) && __cpp_lib_transformation_trait_aliases >= 201304
-#    define FALCON_CXX_LIB_HAS_TRANSFORMATION_TRAIT_ALIASES 1
+#    define FALCON_CXX_LIB_TRANSFORMATION_TRAIT_ALIASES 1
 #  endif
 
 // std::result_of and SFINAE
 #  if defined __cpp_lib_result_of_sfinae && __cpp_lib_result_of_sfinae >= 201210
-#    define FALCON_CXX_LIB_HAS_RESULT_OF_SFINAE 1
+#    define FALCON_CXX_LIB_RESULT_OF_SFINAE 1
 #  endif
 
 #endif
@@ -73,10 +73,10 @@ SOFTWARE.
 #  define FALCON_CXX_LIB_IS_NULL_POINTER 0
 #endif
 
-#ifndef FALCON_CXX_LIB_HAS_TRANSFORMATION_TRAIT_ALIASES
-#  define FALCON_CXX_LIB_HAS_TRANSFORMATION_TRAIT_ALIASES 0
+#ifndef FALCON_CXX_LIB_TRANSFORMATION_TRAIT_ALIASES
+#  define FALCON_CXX_LIB_TRANSFORMATION_TRAIT_ALIASES 0
 #endif
 
-#ifndef FALCON_CXX_LIB_HAS_RESULT_OF_SFINAE
-#  define FALCON_CXX_LIB_HAS_RESULT_OF_SFINAE 0
+#ifndef FALCON_CXX_LIB_RESULT_OF_SFINAE
+#  define FALCON_CXX_LIB_RESULT_OF_SFINAE 0
 #endif

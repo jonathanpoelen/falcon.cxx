@@ -34,7 +34,7 @@ SOFTWARE.
 
 // std::quoted
 #if defined(__cpp_lib_quoted_string_io) && __cpp_lib_quoted_string_io >= 201304
-#  define FALCON_CXX_LIB_HAS_QUOTED_STRING_IO 1
+#  define FALCON_CXX_LIB_QUOTED_STRING_IO 1
 #else
-#  define FALCON_CXX_LIB_HAS_QUOTED_STRING_IO 0
+#  define FALCON_CXX_LIB_QUOTED_STRING_IO 0
 #endif

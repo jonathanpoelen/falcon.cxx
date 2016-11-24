@@ -34,7 +34,7 @@ SOFTWARE.
 
 // std::tuple_element_t
 #if defined __cpp_lib_transparent_operators && __cpp_lib_transparent_operators >= 201210
-#  define FALCON_CXX_LIB_HAS_TRANSPARENT_OPERATORS 1
+#  define FALCON_CXX_LIB_TRANSPARENT_OPERATORS 1
 #else
-#  define FALCON_CXX_LIB_HAS_TRANSPARENT_OPERATORS 0
+#  define FALCON_CXX_LIB_TRANSPARENT_OPERATORS 0
 #endif
