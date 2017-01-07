@@ -583,8 +583,12 @@ SOFTWARE.
 //@}
 
 
-#if defined(IN_KDEVELOP_PARSER) && !defined(IN_IDE_PARSER)
-# define IN_IDE_PARSER
+#if defined(__clang__) || defined(__GNUC__)
+# define FALCON_LIKELY(x) __builtin_expect(!!(x), 1)
+# define FALCON_UNLIKELY(x) __builtin_expect(!!(x), 0)
+#else
+# define FALCON_LIKELY(x) (x)
+# define FALCON_UNLIKELY(x) (x)
 #endif
 
 
@@ -599,19 +603,25 @@ SOFTWARE.
 #endif
 
 #if __cplusplus >= FALCON_CXX_STD_11
+# include <initializer_list>
+# define FALCON_PACK ...
 # define FALCON_CONSTEXPR constexpr
 # define FALCON_NOEXCEPT noexcept
 # define FALCON_NOEXCEPT_EXPR(expr) noexcept(expr)
 # ifndef IN_IDE_PARSER
 #  define FALCON_NOEXCEPT_EXPR2(...) noexcept(noexcept(__VA_ARGS__))
+#  define FALCON_UNPACK
 # else
 #  define FALCON_NOEXCEPT_EXPR2(expr) noexcept(noexcept(expr))
+#  define FALCON_UNPACK(...) (void)std::initializer_list<int>{((void)(__VA_ARGS__), 0)...}
 # endif
 #else
+# define FALCON_PACK
 # define FALCON_CONSTEXPR
 # define FALCON_NOEXCEPT
 # define FALCON_NOEXCEPT_EXPR(expr)
 # define FALCON_NOEXCEPT_EXPR2(...)
+# define FALCON_UNPACK(...) (void)(__VA_ARGS__)
 #endif
 
 #if FALCON_CXX_FEATURE_STATIC_ASSERT_MSG
