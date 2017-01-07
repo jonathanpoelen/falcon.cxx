@@ -610,10 +610,10 @@ SOFTWARE.
 # define FALCON_NOEXCEPT_EXPR(expr) noexcept(expr)
 # ifndef IN_IDE_PARSER
 #  define FALCON_NOEXCEPT_EXPR2(...) noexcept(noexcept(__VA_ARGS__))
-#  define FALCON_UNPACK
+#  define FALCON_UNPACK(...) (void)std::initializer_list<int>{((void)(__VA_ARGS__), 0)...}
 # else
 #  define FALCON_NOEXCEPT_EXPR2(expr) noexcept(noexcept(expr))
-#  define FALCON_UNPACK(...) (void)std::initializer_list<int>{((void)(__VA_ARGS__), 0)...}
+#  define FALCON_UNPACK
 # endif
 #else
 # define FALCON_PACK
