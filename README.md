@@ -38,6 +38,9 @@ FALCON_CXX_HAS_FEATURE(feature) // __has_feature(feature)
 
 FALCON_PRAGMA(X) // _Pragma(#X)
 
+FALCON_LIKELY(X) // To provide the compiler with branch prediction information
+FALCON_UNLIKELY(X) // To provide the compiler with branch prediction information
+
 
 // Syntax
 
@@ -55,7 +58,8 @@ FALCON_SCOPED_INLINE_VARIABLE(type, name) // anonymous namespace
 
 FALCON_EMPTY_CLASS(name) // struct name { constexpr name() noexcept {} }
 
-FALCON_EXPAND // `...`
+FALCON_PACK // c++11 or later: `...`, otherwise empty
+FALCON_UNPACK(...) // c++11 or later: `std::initializer_list<int>{(void(__VA_ARGS__), 0)...}`, otherwise `void(__VA_ARGS__)`
 
 FALCON_IN_IDE_PARSER_CONDITIONAL(in_ide_expr, not_ide_expr)
 
@@ -147,6 +151,26 @@ FALCON_CXX_FEATURE_INLINE_VARIABLES // http://wg21.link/p0386r2
 
 FALCON_CXX_FEATURE_CONCEPTS // -fconcepts  http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/n4377.pdf
 FALCON_CXX_FEATURE_TRANSACTIONAL_MEMORY // -fgnu-tm  http://www.open-std.org/Jtc1/sc22/wg21/docs/papers/2015/n4514.pdf
+```
+
+- move.hpp
+
+```c++
+FALCON_CXX11_RVALUE // c++11 or later: `&&`, otherwise empty
+FALCON_CXX03_CONST_REF // c++11 or later: empty, otherwise `const &`, 
+FALCON_RVALUE_OR_CONST_REF // c++11 or later: `&&`, otherwise `const &`
+FALCON_MOVE(x) // `std::move(x)` or empty
+FALCON_FORWARD(T, x) // `std::forward<T>(x)` or empty
+FALCON_MOVE_IF_NOEXCEPT(x) // `std::move_if_noexcept(x)` or empty
+```
+
+- move_algorithm.hpp
+
+```c++
+FALCON_MOVE_BACKWARD3(first, last, d_last) // `std::move_backward(first, last, d_last)` or `std::copy_backward(first, last, d_last)`
+FALCON_MOVE3(first, last, d_first) // `std::move(first, last, d_last)` or `std::copy(first, last, d_last)`
+FALCON_MAKE_MOVE_ITERATOR(iter) // `std::make_move_iterator(iter)` or `(iter)`
+FALCON_MAKE_MOVE_IF_NOEXCEPT_ITERATOR(iter) // `std::make_move_if_noexcept_iterator(iter)` or `(iter)`
 ```
 
 - compiler_attributes.hpp

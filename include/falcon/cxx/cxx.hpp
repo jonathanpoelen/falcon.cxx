@@ -654,7 +654,6 @@ SOFTWARE.
   noexcept(noexcept(decltype(expr)(expr))) \
   { return expr; }
 
-# define FALCON_EXPAND
 # define FALCON_IN_IDE_PARSER_CONDITIONAL(in_ide_expr, not_ide_expr) in_ide_expr
 #else
 # define FALCON_DECLTYPE_AUTO_RETURN(...) \
@@ -674,7 +673,6 @@ SOFTWARE.
   noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) \
   { return __VA_ARGS__; }
 
-# define FALCON_EXPAND ...
 # define FALCON_IN_IDE_PARSER_CONDITIONAL(in_ide_expr, not_ide_expr) not_ide_expr
 #endif
 
