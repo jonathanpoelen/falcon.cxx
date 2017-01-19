@@ -29,9 +29,11 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
+
 
 // std::experimental::memory_resource
-#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/memory_resource>)
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/memory_resource>)
 #  include <experimental/memory_resource>
 #  if defined(__cpp_lib_experimental_memory_resource) && __cpp_lib_experimental_memory_resource >= 201402
 #    define FALCON_CXX_LIB_EXPERIMENTAL_MEMORY_RESOURCE 1

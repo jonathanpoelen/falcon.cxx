@@ -29,8 +29,10 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
 
-#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/type_traits>)
+
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/type_traits>)
 #  include <experimental/type_traits>
 
 // std::experimental::invocation_type

@@ -29,9 +29,11 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
+
 
 // std::experimental::shared_ptr_arrays
-#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/memory>)
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/memory>)
 #  include <experimental/memory>
 #  if defined(__cpp_lib_experimental_shared_ptr_arrays) && __cpp_lib_experimental_shared_ptr_arrays >= 201406
 #    define FALCON_CXX_LIB_EXPERIMENTAL_SHARED_PTR_ARRAYS 1

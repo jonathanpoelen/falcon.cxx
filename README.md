@@ -25,29 +25,40 @@ FALCON_CXX_STD_14 // 201402
 
 FALCON_CONSTEXPR // constexpr
 FALCON_CXX14_CONSTEXPR // c++14 on later : `constexpr`, otherwise `inline`
+FALCON_CONSTEXPR_AFTER_CXX11
+FALCON_CONSTEXPR_AFTER_CXX14
 
 FALCON_NOEXCEPT // noexcept
-FALCON_NOEXCEPT_EXPR(expr) // noexcept(expr)
-FALCON_NOEXCEPT_EXPR2(...) // noexcept(noexcept(...))
+FALCON_NOEXCEPT_EXPR(expr) // `noexcept(expr)`
+FALCON_NOEXCEPT_EXPR2(...) // `noexcept(noexcept(...))`
 
 FALCON_RESTRICT // `__restrict__`
-FALCON_STATIC_ASSERT(expr) // static_assert(expr, #expr)
+FALCON_STATIC_ASSERT(expr) // `static_assert(expr, #expr)`
 
-FALCON_CXX_HAS_ATTRIBUTE(attr) // __has_cpp_attribute(attr)
-FALCON_CXX_HAS_FEATURE(feature) // __has_feature(feature)
+FALCON_ALWAYS_INLINE // `__attribute__((always_inline))` or `__forceinline`
 
-FALCON_PRAGMA(X) // _Pragma(#X)
+// http://clang.llvm.org/docs/LanguageExtensions.html
+FALCON_HAS_BUILTIN(builtin) // `__has_builtin(builtin)`
+FALCON_HAS_FEATURE(feature) // `__has_feature(feature)` or `__has_extension(feature)`
+FALCON_HAS_CPP_ATTRIBUTE(attr) // `__has_cpp_attribute(attr)`
+FALCON_HAS_ATTRIBUTE(attr) // `__has_attribute(attr)`
+FALCON_HAS_DECLSPEC_ATTRIBUTE(attr) // `__has_declspec_attribute(attr)`
+FALCON_HAS_INCLUDE(filename) // `__has_include(filename)`
+FALCON_HAS_INCLUDE_NEXT(filename) // `__has_include(filename)`
 
-FALCON_LIKELY(X) // To provide the compiler with branch prediction information
-FALCON_UNLIKELY(X) // To provide the compiler with branch prediction information
+FALCON_PRAGMA(X) // `_Pragma(#X)`
+
+// To provide the compiler with branch prediction information
+FALCON_LIKELY(X)
+FALCON_UNLIKELY(X)
 
 
 // Syntax
 
-FALCON_RETURN_NOEXCEPT(...) // noexcept(noexcept(...)) { return ...; }
-FALCON_DECLTYPE_NOEXCEPT(...) // noexcept(noexcept(...)) -> decltype(...)
-FALCON_DECLTYPE_AUTO_RETURN(...) // -> decltype(...) { return ...; }
-FALCON_DECLTYPE_AUTO_RETURN_NOEXCEPT(...) // noexcept(noexcept(...)) -> decltype(...) { return ...; }
+FALCON_RETURN_NOEXCEPT(...) // `noexcept(noexcept(...)) { return ...; }`
+FALCON_DECLTYPE_NOEXCEPT(...) // `noexcept(noexcept(...)) -> decltype(...)`
+FALCON_DECLTYPE_AUTO_RETURN(...) // -> `decltype(...) { return ...; }`
+FALCON_DECLTYPE_AUTO_RETURN_NOEXCEPT(...) // `noexcept(noexcept(...)) -> decltype(...) { return ...; }`
 
 FALCON_CXX11_DEFAULT_MOVE(class_name) // move-ctor, move-assignement
 FALCON_CXX11_DEFAULT_COPY_MOVE(class_name) // move/copy-ctor, move/copy-assignement
@@ -56,7 +67,7 @@ FALCON_CXX11_DEFAULT_SPECIAL_MEMBER(class_name) // move/copy-ctor, move/copy-ass
 FALCON_INLINE_VARIABLE(type, name)
 FALCON_SCOPED_INLINE_VARIABLE(type, name) // anonymous namespace
 
-FALCON_EMPTY_CLASS(name) // struct name { constexpr name() noexcept {} }
+FALCON_EMPTY_CLASS(name) // `struct name { constexpr name() noexcept {} }`
 
 FALCON_PACK // c++11 or later: `...`, otherwise empty
 FALCON_UNPACK(...) // c++11 or later: `std::initializer_list<int>{(void(__VA_ARGS__), 0)...}`, otherwise `void(__VA_ARGS__)`
@@ -76,26 +87,33 @@ FALCON_DIAGNOSTIC_GCC_IGNORE(X)
 FALCON_DIAGNOSTIC_GCC_ONLY_IGNORE(X)
 FALCON_DIAGNOSTIC_MSVC_IGNORE(X)
 
+FALCON_DIAGNOSTIC_CLANG_WARNING(X)
+FALCON_DIAGNOSTIC_GCC_WARNING(X)
+FALCON_DIAGNOSTIC_GCC_ONLY_WARNING(X)
+FALCON_DIAGNOSTIC_MSVC_WARNING(X)
+
+FALCON_DIAGNOSTIC_WARNING_MSG(MSG)
+
 
 // Attributes
 
-FALCON_CXX_ATTRIBUTE_NODISCARD // [[nodiscard]]
-FALCON_CXX_ATTRIBUTE_FALLTHROUGH // [[fallthrough]]
-FALCON_CXX_ATTRIBUTE_NORETURN // [[noreturn]]
-FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY // [[carries_dependency]]
-FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED // [[maybe_unused]]
-FALCON_CXX_ATTRIBUTE_DEPRECATED // [[deprecated]]
-FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) // [[deprecated(msg)]]
+FALCON_ATTRIBUTE_NODISCARD // `[[nodiscard]]`
+FALCON_ATTRIBUTE_FALLTHROUGH // `[[fallthrough]]`
+FALCON_ATTRIBUTE_NORETURN // `[[noreturn]]`
+FALCON_ATTRIBUTE_CARRIES_DEPENDENCY // `[[carries_dependency]]`
+FALCON_ATTRIBUTE_MAYBE_UNUSED // `[[maybe_unused]]`
+FALCON_ATTRIBUTE_DEPRECATED // `[[deprecated]]`
+FALCON_ATTRIBUTE_DEPRECATED_MSG(msg) // `[[deprecated(msg)]]`
 FALCON_DEPRECATED // FALCON_CXX_ATTRIBUTE_DEPRECATED
 FALCON_DEPRECATED_MSG(msg) // FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
 
 // (0 or 1)
-FALCON_CXX_HAS_ATTRIBUTE_CARRIES_DEPENDENCY
-FALCON_CXX_HAS_ATTRIBUTE_DEPRECATED
-FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH
-FALCON_CXX_HAS_ATTRIBUTE_MAYBE_UNUSED
-FALCON_CXX_HAS_ATTRIBUTE_NODISCARD
-FALCON_CXX_HAS_ATTRIBUTE_NORETURN
+FALCON_HAS_CPP_ATTRIBUTE_CARRIES_DEPENDENCY
+FALCON_HAS_CPP_ATTRIBUTE_DEPRECATED
+FALCON_HAS_CPP_ATTRIBUTE_FALLTHROUGH
+FALCON_HAS_CPP_ATTRIBUTE_MAYBE_UNUSED
+FALCON_HAS_CPP_ATTRIBUTE_NODISCARD
+FALCON_HAS_CPP_ATTRIBUTE_NORETURN
 
 
 // Features (0 or 1)
@@ -157,7 +175,7 @@ FALCON_CXX_FEATURE_TRANSACTIONAL_MEMORY // -fgnu-tm  http://www.open-std.org/Jtc
 
 ```c++
 FALCON_CXX11_RVALUE // c++11 or later: `&&`, otherwise empty
-FALCON_CXX03_CONST_REF // c++11 or later: empty, otherwise `const &`, 
+FALCON_CXX03_CONST_REF // c++11 or later: empty, otherwise `const &`,
 FALCON_RVALUE_OR_CONST_REF // c++11 or later: `&&`, otherwise `const &`
 FALCON_MOVE(x) // `std::move(x)` or empty
 FALCON_FORWARD(T, x) // `std::forward<T>(x)` or empty

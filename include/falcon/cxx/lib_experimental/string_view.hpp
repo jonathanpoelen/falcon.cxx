@@ -29,9 +29,11 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
+
 
 // std::experimental::string_view
-#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/string_view>)
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/string_view>)
 #  include <experimental/string_view>
 #  if defined(__cpp_lib_experimental_string_view) && __cpp_lib_experimental_string_view >= 201411
 #    define FALCON_CXX_LIB_EXPERIMENTAL_STRING_VIEW 1

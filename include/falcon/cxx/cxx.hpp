@@ -402,175 +402,230 @@ SOFTWARE.
 //@{
 
 #ifdef __has_cpp_attribute
-# define FALCON_CXX_HAS_ATTRIBUTE(attr) __has_cpp_attribute(attr)
+# define FALCON_HAS_CPP_ATTRIBUTE(attr) __has_cpp_attribute(attr)
 #else
-# define FALCON_CXX_HAS_ATTRIBUTE(attr) 0
+# define FALCON_HAS_CPP_ATTRIBUTE(attr) 0
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3760.html
-#ifndef FALCON_CXX_HAS_ATTRIBUTE_DEPRECATED
-# if FALCON_CXX_HAS_ATTRIBUTE(deprecated) >= 201309 \
+#ifndef FALCON_HAS_CPP_ATTRIBUTE_DEPRECATED
+# if FALCON_HAS_CPP_ATTRIBUTE(deprecated) >= 201309 \
    || defined(__cpp_attribute_deprecated)
-#  define FALCON_CXX_HAS_ATTRIBUTE_DEPRECATED 1
+#  define FALCON_HAS_CPP_ATTRIBUTE_DEPRECATED 1
 # else
-#  define FALCON_CXX_HAS_ATTRIBUTE_DEPRECATED 0
+#  define FALCON_HAS_CPP_ATTRIBUTE_DEPRECATED 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_ATTRIBUTE_DEPRECATED
+#ifndef FALCON_ATTRIBUTE_DEPRECATED
 # if defined(FALCON_DISABLE_DEPRECATED_WARNINGS)
-#  if FALCON_CXX_HAS_ATTRIBUTE_DEPRECATED
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED [[deprecated]]
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) [[deprecated(msg)]]
+#  if FALCON_HAS_CPP_ATTRIBUTE_DEPRECATED
+#   define FALCON_ATTRIBUTE_DEPRECATED [[deprecated]]
+#   define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg) [[deprecated(msg)]]
 #  elif defined(__clang__) || defined(__GNUC__)
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED __attribute__((deprecated("deprecated")))
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) __attribute__((deprecated(msg)))
+#   define FALCON_ATTRIBUTE_DEPRECATED __attribute__((deprecated("deprecated")))
+#   define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg) __attribute__((deprecated(msg)))
 #  elif defined(_MSC_VER)
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED __declspec(deprecated("deprecated"))
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg) __declspec(deprecated(msg))
+#   define FALCON_ATTRIBUTE_DEPRECATED __declspec(deprecated("deprecated"))
+#   define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg) __declspec(deprecated(msg))
 #  else
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED
-#   define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
+#   define FALCON_ATTRIBUTE_DEPRECATED
+#   define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg)
 #  endif
 # else
-#  define FALCON_CXX_ATTRIBUTE_DEPRECATED
-#  define FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
+#  define FALCON_ATTRIBUTE_DEPRECATED
+#  define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg)
 # endif
 #endif
 
-#define FALCON_DEPRECATED          FALCON_CXX_ATTRIBUTE_DEPRECATED
-#define FALCON_DEPRECATED_MSG(msg) FALCON_CXX_ATTRIBUTE_DEPRECATED_MSG(msg)
+#define FALCON_DEPRECATED          FALCON_ATTRIBUTE_DEPRECATED
+#define FALCON_DEPRECATED_MSG(msg) FALCON_ATTRIBUTE_DEPRECATED_MSG(msg)
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0188r1.pdf
-#ifndef FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH
-# if FALCON_CXX_HAS_ATTRIBUTE(fallthrough)
-#  define FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH 1
+#ifndef FALCON_HAS_CPP_ATTRIBUTE_FALLTHROUGH
+# if FALCON_HAS_CPP_ATTRIBUTE(fallthrough)
+#  define FALCON_HAS_CPP_ATTRIBUTE_FALLTHROUGH 1
 # else
-#  define FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH 0
+#  define FALCON_HAS_CPP_ATTRIBUTE_FALLTHROUGH 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_ATTRIBUTE_FALLTHROUGH
-# if FALCON_CXX_HAS_ATTRIBUTE_FALLTHROUGH
-#  define FALCON_CXX_ATTRIBUTE_FALLTHROUGH [[fallthrough]]
+#ifndef FALCON_ATTRIBUTE_FALLTHROUGH
+# if FALCON_HAS_CPP_ATTRIBUTE_FALLTHROUGH
+#  define FALCON_ATTRIBUTE_FALLTHROUGH [[fallthrough]]
 # elif defined(__clang__)
-#  define FALCON_CXX_ATTRIBUTE_FALLTHROUGH [[clang::fallthrough]]
+#  define FALCON_ATTRIBUTE_FALLTHROUGH [[clang::fallthrough]]
 # else
-#  define FALCON_CXX_ATTRIBUTE_FALLTHROUGH void(0)
+#  define FALCON_ATTRIBUTE_FALLTHROUGH void(0)
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0189r1.pdf
-#ifndef FALCON_CXX_HAS_ATTRIBUTE_NODISCARD
-# if FALCON_CXX_HAS_ATTRIBUTE(nodiscard)
-#  define FALCON_CXX_HAS_ATTRIBUTE_NODISCARD 1
+#ifndef FALCON_HAS_CPP_ATTRIBUTE_NODISCARD
+# if FALCON_HAS_CPP_ATTRIBUTE(nodiscard)
+#  define FALCON_HAS_CPP_ATTRIBUTE_NODISCARD 1
 # else
-#  define FALCON_CXX_HAS_ATTRIBUTE_NODISCARD 0
+#  define FALCON_HAS_CPP_ATTRIBUTE_NODISCARD 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_ATTRIBUTE_NODISCARD
-# if FALCON_CXX_HAS_ATTRIBUTE_NODISCARD
-#  define FALCON_CXX_ATTRIBUTE_NODISCARD [[nodiscard]]
+#ifndef FALCON_ATTRIBUTE_NODISCARD
+# if FALCON_HAS_CPP_ATTRIBUTE_NODISCARD
+#  define FALCON_ATTRIBUTE_NODISCARD [[nodiscard]]
 # elif defined(__clang__) || defined(__GNUC__)
-#  define FALCON_CXX_ATTRIBUTE_NODISCARD __attribute__((warn_unused_result))
+#  define FALCON_ATTRIBUTE_NODISCARD __attribute__((warn_unused_result))
 # elif defined(_MSC_VER)
-#  define FALCON_CXX_ATTRIBUTE_NODISCARD _Check_return_
+#  define FALCON_ATTRIBUTE_NODISCARD _Check_return_
 # else
-#  define FALCON_CXX_ATTRIBUTE_NODISCARD
+#  define FALCON_ATTRIBUTE_NODISCARD
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0212r1.pdf
-#ifndef FALCON_CXX_HAS_ATTRIBUTE_MAYBE_UNUSED
-# if FALCON_CXX_HAS_ATTRIBUTE(maybe_unused)
-#  define FALCON_CXX_HAS_ATTRIBUTE_MAYBE_UNUSED 1
+#ifndef FALCON_HAS_CPP_ATTRIBUTE_MAYBE_UNUSED
+# if FALCON_HAS_CPP_ATTRIBUTE(maybe_unused)
+#  define FALCON_HAS_CPP_ATTRIBUTE_MAYBE_UNUSED 1
 # else
-#  define FALCON_CXX_HAS_ATTRIBUTE_MAYBE_UNUSED 0
+#  define FALCON_HAS_CPP_ATTRIBUTE_MAYBE_UNUSED 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED
-# if FALCON_CXX_HAS_ATTRIBUTE_MAYBE_UNUSED
-#  define FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED [[maybe_unused]]
+#ifndef FALCON_ATTRIBUTE_MAYBE_UNUSED
+# if FALCON_HAS_CPP_ATTRIBUTE_MAYBE_UNUSED
+#  define FALCON_ATTRIBUTE_MAYBE_UNUSED [[maybe_unused]]
 # elif defined(__clang__) || defined(__GNUC__)
-#  define FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED __attribute__((unused))
+#  define FALCON_ATTRIBUTE_MAYBE_UNUSED __attribute__((unused))
 # else
-#  define FALCON_CXX_ATTRIBUTE_MAYBE_UNUSED
+#  define FALCON_ATTRIBUTE_MAYBE_UNUSED
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2761.pdf
-#ifndef FALCON_CXX_HAS_ATTRIBUTE_NORETURN
-# if FALCON_CXX_HAS_ATTRIBUTE(noreturn) >= 200809
-#  define FALCON_CXX_HAS_ATTRIBUTE_NORETURN 1
+#ifndef FALCON_HAS_CPP_ATTRIBUTE_NORETURN
+# if FALCON_HAS_CPP_ATTRIBUTE(noreturn) >= 200809
+#  define FALCON_HAS_CPP_ATTRIBUTE_NORETURN 1
 # else
-#  define FALCON_CXX_HAS_ATTRIBUTE_NORETURN 0
+#  define FALCON_HAS_CPP_ATTRIBUTE_NORETURN 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_ATTRIBUTE_NORETURN
-# if FALCON_CXX_HAS_ATTRIBUTE_NORETURN
-#  define FALCON_CXX_ATTRIBUTE_NORETURN [[noreturn]]
+#ifndef FALCON_ATTRIBUTE_NORETURN
+# if FALCON_HAS_CPP_ATTRIBUTE_NORETURN
+#  define FALCON_ATTRIBUTE_NORETURN [[noreturn]]
 # elif defined(__clang__) || defined(__GNUC__)
-#  define FALCON_CXX_ATTRIBUTE_NORETURN __attribute__((noreturn))
+#  define FALCON_ATTRIBUTE_NORETURN __attribute__((noreturn))
 # elif defined(_MSC_VER)
-#  define FALCON_CXX_ATTRIBUTE_NORETURN __declspec(noreturn)
+#  define FALCON_ATTRIBUTE_NORETURN __declspec(noreturn)
 # else
-#  define FALCON_CXX_ATTRIBUTE_NORETURN
+#  define FALCON_ATTRIBUTE_NORETURN
 # endif
 #endif
 
 // http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2761.pdf
-#ifndef FALCON_CXX_HAS_ATTRIBUTE_CARRIES_DEPENDENCY
-# if FALCON_CXX_HAS_ATTRIBUTE(carries_dependency) >= 200809
-#  define FALCON_CXX_HAS_ATTRIBUTE_CARRIES_DEPENDENCY 1
+#ifndef FALCON_HAS_CPP_ATTRIBUTE_CARRIES_DEPENDENCY
+# if FALCON_HAS_CPP_ATTRIBUTE(carries_dependency) >= 200809
+#  define FALCON_HAS_CPP_ATTRIBUTE_CARRIES_DEPENDENCY 1
 # else
-#  define FALCON_CXX_HAS_ATTRIBUTE_CARRIES_DEPENDENCY 0
+#  define FALCON_HAS_CPP_ATTRIBUTE_CARRIES_DEPENDENCY 0
 # endif
 #endif
 
-#ifndef FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY
-# if FALCON_CXX_HAS_ATTRIBUTE_CARRIES_DEPENDENCY
-#  define FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY [[carries_dependency]]
+#ifndef FALCON_ATTRIBUTE_CARRIES_DEPENDENCY
+# if FALCON_HAS_CPP_ATTRIBUTE_CARRIES_DEPENDENCY
+#  define FALCON_ATTRIBUTE_CARRIES_DEPENDENCY [[carries_dependency]]
 # else
-#  define FALCON_CXX_ATTRIBUTE_CARRIES_DEPENDENCY
+#  define FALCON_ATTRIBUTE_CARRIES_DEPENDENCY
 # endif
 #endif
 
 //@}
 
 
-#ifdef __has_feature
-# define FALCON_CXX_HAS_FEATURE(feature) __has_feature(feature)
+#ifdef __has_builtin
+# define FALCON_HAS_BUILTIN(builtin) __has_builtin(builtin)
 #else
-# define FALCON_CXX_HAS_FEATURE(feature) 0
+# define FALCON_HAS_BUILTIN(builtin) 0
+#endif
+
+#ifdef __has_feature
+# define FALCON_HAS_FEATURE(feature) __has_feature(feature)
+#elif defined __has_extension
+# define FALCON_HAS_FEATURE(feature) __has_extension(feature)
+#else
+# define FALCON_HAS_FEATURE(feature) 0
+#endif
+
+#ifdef __has_attribute
+# define FALCON_HAS_ATTRIBUTE(attr) __has_attribute(attr)
+#else
+# define FALCON_HAS_ATTRIBUTE(attr) 0
+#endif
+
+#ifdef __has_declspec_attribute
+# define FALCON_HAS_DECLSPEC_ATTRIBUTE(attr) __has_declspec_attribute(attr)
+#else
+# define FALCON_HAS_DECLSPEC_ATTRIBUTE(attr) 0
+#endif
+
+#ifdef __has_include
+# define FALCON_HAS_INCLUDE(filename) __has_include(filename)
+#else
+# define FALCON_HAS_INCLUDE(filename) 0
+#endif
+
+#ifdef __has_include_next
+# define FALCON_HAS_INCLUDE_NEXT(filename) __has_include_next(filename)
+#else
+# define FALCON_HAS_INCLUDE_NEXT(filename) 0
 #endif
 
 
+// Diagnostic
 //@{
 
 # define FALCON_PRAGMA(X) _Pragma(#X)
 
-#if defined(_MSC_VER)
+#ifdef _MSC_VER
+
 # define FALCON_DIAGNOSTIC_PUSH __pragma(warning(push))
 # define FALCON_DIAGNOSTIC_POP __pragma(warning(pop))
+
 # define FALCON_DIAGNOSTIC_MSVC_IGNORE(X) __pragma(warning(disable:X))
 # define FALCON_DIAGNOSTIC_GCC_ONLY_IGNORE(X)
 # define FALCON_DIAGNOSTIC_GCC_IGNORE(X)
 # define FALCON_DIAGNOSTIC_CLANG_IGNORE(X)
+# define FALCON_DIAGNOSTIC_MSVC_WARNING(X) __pragma(warning(4:X))
+# define FALCON_DIAGNOSTIC_GCC_ONLY_WARNING(X)
+# define FALCON_DIAGNOSTIC_GCC_WARNING(X)
+# define FALCON_DIAGNOSTIC_CLANG_WARNING(X)
+
+# define FALCON_DIAGNOSTIC_WARNING_MSG(MSG) \
+  __pragma(warning())                       \
+  __pragma(message("warning:" MSG))
+
 #elif defined(__GNUC__) || defined(__clang__)
+
 # define FALCON_DIAGNOSTIC_PUSH FALCON_PRAGMA(GCC diagnostic push)
 # define FALCON_DIAGNOSTIC_POP FALCON_PRAGMA(GCC diagnostic pop)
+
 # define FALCON_DIAGNOSTIC_MSVC_IGNORE(X)
 # define FALCON_DIAGNOSTIC_GCC_IGNORE(X) FALCON_PRAGMA(GCC diagnostic ignored X)
+# define FALCON_DIAGNOSTIC_MSVC_WARNING(X)
+# define FALCON_DIAGNOSTIC_GCC_WARNING(X) FALCON_PRAGMA(GCC diagnostic warning X)
 # ifdef __clang__
 #  define FALCON_DIAGNOSTIC_GCC_ONLY_IGNORE(X)
 #  define FALCON_DIAGNOSTIC_CLANG_IGNORE FALCON_DIAGNOSTIC_GCC_IGNORE
+#  define FALCON_DIAGNOSTIC_GCC_ONLY_WARNING(X)
+#  define FALCON_DIAGNOSTIC_CLANG_WARNING FALCON_DIAGNOSTIC_GCC_WARNING
 # else
 #  define FALCON_DIAGNOSTIC_GCC_ONLY_IGNORE FALCON_DIAGNOSTIC_GCC_IGNORE
 #  define FALCON_DIAGNOSTIC_CLANG_IGNORE(X)
+#  define FALCON_DIAGNOSTIC_GCC_ONLY_WARNING FALCON_DIAGNOSTIC_GCC_WARNING
+#  define FALCON_DIAGNOSTIC_CLANG_WARNING(X)
 # endif
+
+# define FALCON_DIAGNOSTIC_WARNING_MSG(MSG) FALCON_PRAGMA(GCC warning MSG)
+
 #else
 # define FALCON_DIAGNOSTIC_PUSH
 # define FALCON_DIAGNOSTIC_POP
@@ -578,29 +633,50 @@ SOFTWARE.
 # define FALCON_DIAGNOSTIC_GCC_IGNORE(X)
 # define FALCON_DIAGNOSTIC_GCC_ONLY_IGNORE(X)
 # define FALCON_DIAGNOSTIC_CLANG_IGNORE(X)
+# define FALCON_DIAGNOSTIC_MSVC_WARNING(X)
+# define FALCON_DIAGNOSTIC_GCC_WARNING(X)
+# define FALCON_DIAGNOSTIC_GCC_ONLY_WARNING(X)
+# define FALCON_DIAGNOSTIC_CLANG_WARNING(X)
+# define FALCON_DIAGNOSTIC_WARNING_MSG(MSG) FALCON_PRAGMA(warning MSG)
 #endif
 
 //@}
 
 
+// Keywords and Syntax
+//@{
+
 #if defined(__clang__) || defined(__GNUC__)
 # define FALCON_LIKELY(x) __builtin_expect(!!(x), 1)
 # define FALCON_UNLIKELY(x) __builtin_expect(!!(x), 0)
+# define FALCON_ALWAYS_INLINE __attribute__((always_inline))
 #else
 # define FALCON_LIKELY(x) (x)
 # define FALCON_UNLIKELY(x) (x)
+# ifdef _MSC_VER
+#  define FALCON_ALWAYS_INLINE __forceinline
+# else
+#  define FALCON_ALWAYS_INLINE
+# endif
 #endif
-
-
-// Keywords and Syntax
-//@{
 
 // C++14 constexpr functions are inline in C++11
 #if __cplusplus >= FALCON_CXX_STD_14
 # define FALCON_CXX14_CONSTEXPR constexpr
+# define FALCON_CONSTEXPR_AFTER_CXX11 constexpr
 #else
 # define FALCON_CXX14_CONSTEXPR inline
+# define FALCON_CONSTEXPR_AFTER_CXX11
 #endif
+
+#if __cplusplus > FALCON_CXX_STD_14
+# define FALCON_CONSTEXPR_AFTER_CXX14 constexpr
+#else
+# define FALCON_CONSTEXPR_AFTER_CXX14
+#endif
+
+FALCON_DIAGNOSTIC_PUSH
+FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
 
 #if __cplusplus >= FALCON_CXX_STD_11
 # include <initializer_list>
@@ -636,7 +712,7 @@ SOFTWARE.
 # define FALCON_PP_NIL
 #endif
 
-#if defined(IN_IDE_PARSER)
+#ifdef IN_IDE_PARSER
 # define FALCON_DECLTYPE_AUTO_RETURN(expr) \
   -> decltype(expr)                        \
   { return (expr); }
@@ -673,6 +749,8 @@ SOFTWARE.
   noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) \
   { return __VA_ARGS__; }
 
+FALCON_DIAGNOSTIC_POP
+
 # define FALCON_IN_IDE_PARSER_CONDITIONAL(in_ide_expr, not_ide_expr) not_ide_expr
 #endif
 
@@ -704,10 +782,17 @@ SOFTWARE.
     inline constexpr type name{};                  \
   }
 #else
+# if __cplusplus >= FALCON_CXX_STD_11
 namespace falcon { namespace detail {
   template<class T> struct static_const { static constexpr T value{}; };
   template<class T> constexpr T static_const<T>::value;
 } }
+# else
+namespace falcon { namespace detail {
+  template<class T> struct static_const { static T value{}; };
+  template<class T> T static_const<T>::value;
+} }
+# endif
 # define FALCON_INLINE_VARIABLE(type, name)                            \
   constexpr auto & name = ::falcon::detail::static_const<type>::value
 # define FALCON_SCOPED_INLINE_VARIABLE(type, name) \

@@ -29,9 +29,11 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
+
 
 // std::experimental::apply
-#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/tuple>)
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/tuple>)
 #  include <experimental/tuple>
 #  if defined(__cpp_lib_experimental_apply) && __cpp_lib_experimental_apply >= 201402
 #    define FALCON_CXX_LIB_EXPERIMENTAL_APPLY 1

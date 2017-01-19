@@ -29,8 +29,10 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
 
-#if defined(__has_include) && __has_include(<experimental/algorithm>)
+
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/algorithm>)
 #  include <experimental/algorithm>
 
 // std::sample

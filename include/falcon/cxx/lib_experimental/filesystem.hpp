@@ -29,9 +29,11 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
+
 
 // std::experimental::filesystem
-#if __cplusplus >= 201402L && defined(__has_include) && __has_include(<experimental/filesystem>)
+#if __cplusplus >= FALCON_CXX_STD_14 && FALCON_HAS_INCLUDE(<experimental/filesystem>)
 #  include <experimental/filesystem>
 #  if defined(__cpp_lib_experimental_filesystem) && __cpp_lib_experimental_filesystem >= 201406
 #    define FALCON_CXX_LIB_EXPERIMENTAL_FILESYSTEM 1

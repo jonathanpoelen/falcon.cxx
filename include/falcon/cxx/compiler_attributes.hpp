@@ -29,6 +29,8 @@ SOFTWARE.
 
 #pragma once
 
+#include <falcon/cxx/cxx.hpp>
+
 
 // Non-standards Attributes
 //@{
@@ -64,6 +66,9 @@ SOFTWARE.
 # define FALCON_CXX_ANNOTATION_ATTRIBUTE_(x)               // no-op
 #endif
 
+
+FALCON_DIAGNOSTIC_PUSH
+FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
 
 #define FALCON_CXX_ATTRIBUTE_ASSUME_ALIGNED(...) \
   FALCON_CXX_ANNOTATION_ATTRIBUTE_GCC_CLANG_(assume_aligned(__VA_ARGS__))
@@ -238,6 +243,9 @@ SOFTWARE.
 
 #define FALCON_CXX_ATTRIBUTE_NO_THREAD_SAFETY_ANALYSIS \
   FALCON_CXX_ANNOTATION_ATTRIBUTE_CLANG_(no_thread_safety_analysis)
+
+FALCON_DIAGNOSTIC_POP
+
 //@}
 
 //@}
