@@ -56,6 +56,7 @@ FALCON_UNLIKELY(X)
 // Syntax
 
 FALCON_RETURN_NOEXCEPT(...) // `noexcept(noexcept(...)) { return ...; }`
+FALCON_RETURN_VOID_NOEXCEPT(...) // `noexcept(noexcept(...)) { ...; }`
 FALCON_DECLTYPE_NOEXCEPT(...) // `noexcept(noexcept(...)) -> decltype(...)`
 FALCON_DECLTYPE_AUTO_RETURN(...) // -> `decltype(...) { return ...; }`
 FALCON_DECLTYPE_AUTO_RETURN_NOEXCEPT(...) // `noexcept(noexcept(...)) -> decltype(...) { return ...; }`

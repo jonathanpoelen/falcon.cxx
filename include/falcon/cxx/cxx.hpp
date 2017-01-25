@@ -730,6 +730,10 @@ FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
   noexcept(noexcept(decltype(expr)(expr))) \
   { return expr; }
 
+# define FALCON_RETURN_VOID_NOEXCEPT(expr) \
+  noexcept(noexcept(expr))                 \
+  { expr; }
+
 # define FALCON_IN_IDE_PARSER_CONDITIONAL(in_ide_expr, not_ide_expr) in_ide_expr
 #else
 # define FALCON_DECLTYPE_AUTO_RETURN(...) \
@@ -748,6 +752,10 @@ FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
 # define FALCON_RETURN_NOEXCEPT(...)                     \
   noexcept(noexcept(decltype(__VA_ARGS__)(__VA_ARGS__))) \
   { return __VA_ARGS__; }
+
+# define FALCON_RETURN_VOID_NOEXCEPT(...) \
+  noexcept(noexcept(__VA_ARGS__))         \
+  { __VA_ARGS__; }
 
 FALCON_DIAGNOSTIC_POP
 
