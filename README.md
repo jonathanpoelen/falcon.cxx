@@ -20,6 +20,7 @@
 FALCON_CXX_STD_11 // 201103
 FALCON_CXX_STD_14 // 201402
 
+FALCON_CXX_STD_VERSION // 03, 11, 14 or 17
 
 // Keywords
 
@@ -178,9 +179,9 @@ FALCON_CXX_FEATURE_TRANSACTIONAL_MEMORY // -fgnu-tm  http://www.open-std.org/Jtc
 FALCON_CXX11_RVALUE // c++11 or later: `&&`, otherwise empty
 FALCON_CXX03_CONST_REF // c++11 or later: empty, otherwise `const &`,
 FALCON_RVALUE_OR_CONST_REF // c++11 or later: `&&`, otherwise `const &`
-FALCON_MOVE(x) // `std::move(x)` or empty
-FALCON_FORWARD(T, x) // `std::forward<T>(x)` or empty
-FALCON_MOVE_IF_NOEXCEPT(x) // `std::move_if_noexcept(x)` or empty
+FALCON_MOVE(x) // `std::move(x)` or `(x)`
+FALCON_FORWARD(T, x) // `std::forward<T>(x)` or `(x)`
+FALCON_MOVE_IF_NOEXCEPT(x) // `std::move_if_noexcept(x)` or `(x)`
 ```
 
 - move_algorithm.hpp

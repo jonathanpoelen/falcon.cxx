@@ -33,6 +33,18 @@ SOFTWARE.
 #define FALCON_CXX_STD_11 201103
 #define FALCON_CXX_STD_14 201402
 
+#if __cplusplus < FALCON_CXX_STD_11
+# define FALCON_CXX_STD_VERSION 03
+#elif __cplusplus == FALCON_CXX_STD_11
+# define FALCON_CXX_STD_VERSION 11
+#elif __cplusplus < FALCON_CXX_STD_14
+# define FALCON_CXX_STD_VERSION 11
+#elif __cplusplus == FALCON_CXX_STD_14
+# define FALCON_CXX_STD_VERSION 14
+#elif __cplusplus > FALCON_CXX_STD_14
+# define FALCON_CXX_STD_VERSION 17
+#endif
+
 // https://gcc.gnu.org/projects/cxx-status.html
 // http://en.cppreference.com/w/cpp/experimental/feature_test
 // https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations
@@ -680,14 +692,15 @@ FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
 
 #if __cplusplus >= FALCON_CXX_STD_11
 # include <initializer_list>
-# define FALCON_PACK ...
 # define FALCON_CONSTEXPR constexpr
 # define FALCON_NOEXCEPT noexcept
 # define FALCON_NOEXCEPT_EXPR(expr) noexcept(expr)
 # ifndef IN_IDE_PARSER
+#  define FALCON_PACK ...
 #  define FALCON_NOEXCEPT_EXPR2(...) noexcept(noexcept(__VA_ARGS__))
 #  define FALCON_UNPACK(...) (void)std::initializer_list<int>{((void)(__VA_ARGS__), 0)...}
 # else
+#  define FALCON_PACK
 #  define FALCON_NOEXCEPT_EXPR2(expr) noexcept(noexcept(expr))
 #  define FALCON_UNPACK
 # endif
