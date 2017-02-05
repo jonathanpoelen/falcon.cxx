@@ -691,14 +691,14 @@ FALCON_DIAGNOSTIC_PUSH
 FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
 
 #if __cplusplus >= FALCON_CXX_STD_11
-# include <initializer_list>
 # define FALCON_CONSTEXPR constexpr
 # define FALCON_NOEXCEPT noexcept
 # define FALCON_NOEXCEPT_EXPR(expr) noexcept(expr)
 # ifndef IN_IDE_PARSER
 #  define FALCON_PACK ...
 #  define FALCON_NOEXCEPT_EXPR2(...) noexcept(noexcept(__VA_ARGS__))
-#  define FALCON_UNPACK(...) (void)std::initializer_list<int>{((void)(__VA_ARGS__), 0)...}
+namespace falcon { using swallow = int[]; }
+#  define FALCON_UNPACK(...) (void)falcon::swallow{((void)(__VA_ARGS__), 0)...}
 # else
 #  define FALCON_PACK
 #  define FALCON_NOEXCEPT_EXPR2(expr) noexcept(noexcept(expr))
