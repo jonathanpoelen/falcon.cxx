@@ -30,18 +30,31 @@ SOFTWARE.
 #pragma once
 
 
-#define FALCON_CXX_STD_11 201103
-#define FALCON_CXX_STD_14 201402
+#define FALCON_CXX_STD_03 199711L // 1998/2003
+#define FALCON_CXX_STD_11 201103L
+#define FALCON_CXX_STD_14 201402L
 
-#if __cplusplus < FALCON_CXX_STD_11
+#ifdef _MSC_VER
+# if _MSC_VER < 1800
+#  define FALCON_CXX_CPLUSPLUS FALCON_CXX_STD_03
+# elif _MSC_VER < 1900
+#  define FALCON_CXX_CPLUSPLUS FALCON_CXX_STD_11
+# else
+#  define FALCON_CXX_CPLUSPLUS FALCON_CXX_STD_14
+# endif
+#else
+# define FALCON_CXX_CPLUSPLUS __cplusplus
+#endif
+
+#if FALCON_CXX_CPLUSPLUS < FALCON_CXX_STD_11
 # define FALCON_CXX_STD_VERSION 03
-#elif __cplusplus == FALCON_CXX_STD_11
+#elif FALCON_CXX_CPLUSPLUS == FALCON_CXX_STD_11
 # define FALCON_CXX_STD_VERSION 11
-#elif __cplusplus < FALCON_CXX_STD_14
+#elif FALCON_CXX_CPLUSPLUS < FALCON_CXX_STD_14
 # define FALCON_CXX_STD_VERSION 11
-#elif __cplusplus == FALCON_CXX_STD_14
+#elif FALCON_CXX_CPLUSPLUS == FALCON_CXX_STD_14
 # define FALCON_CXX_STD_VERSION 14
-#elif __cplusplus > FALCON_CXX_STD_14
+#elif FALCON_CXX_CPLUSPLUS > FALCON_CXX_STD_14
 # define FALCON_CXX_STD_VERSION 17
 #endif
 
@@ -54,7 +67,7 @@ SOFTWARE.
 //@{
 
 #ifndef FALCON_CXX_FEATURE_RTTI
-# if defined(__cpp_rtti) && __cpp_rtti >= 199711
+# if (defined(__cpp_rtti) && __cpp_rtti >= 199711) || (defined(_CPPRTTI) && _CPPRTTI == 1)
 #  define FALCON_CXX_FEATURE_RTTI 1
 # else
 #  define FALCON_CXX_FEATURE_RTTI 0
@@ -76,7 +89,7 @@ SOFTWARE.
 //@{
 
 #ifndef FALCON_CXX_FEATURE_STATIC_ASSERT
-# if __cplusplus < FALCON_CXX_STD_11
+# if FALCON_CXX_CPLUSPLUS < FALCON_CXX_STD_11
 #  define FALCON_CXX_FEATURE_STATIC_ASSERT 0
 # else
 #  define FALCON_CXX_FEATURE_STATIC_ASSERT 1
@@ -673,7 +686,7 @@ SOFTWARE.
 #endif
 
 // C++14 constexpr functions are inline in C++11
-#if __cplusplus >= FALCON_CXX_STD_14
+#if FALCON_CXX_CPLUSPLUS >= FALCON_CXX_STD_14
 # define FALCON_CXX14_CONSTEXPR constexpr
 # define FALCON_CONSTEXPR_AFTER_CXX11 constexpr
 #else
@@ -681,7 +694,7 @@ SOFTWARE.
 # define FALCON_CONSTEXPR_AFTER_CXX11
 #endif
 
-#if __cplusplus > FALCON_CXX_STD_14
+#if FALCON_CXX_CPLUSPLUS > FALCON_CXX_STD_14
 # define FALCON_CONSTEXPR_AFTER_CXX14 constexpr
 #else
 # define FALCON_CONSTEXPR_AFTER_CXX14
@@ -690,7 +703,7 @@ SOFTWARE.
 FALCON_DIAGNOSTIC_PUSH
 FALCON_DIAGNOSTIC_CLANG_IGNORE("-Wc++98-compat-pedantic")
 
-#if __cplusplus >= FALCON_CXX_STD_11
+#if FALCON_CXX_CPLUSPLUS >= FALCON_CXX_STD_11
 # define FALCON_CONSTEXPR constexpr
 # define FALCON_NOEXCEPT noexcept
 # define FALCON_NOEXCEPT_EXPR(expr) noexcept(expr)
@@ -803,7 +816,7 @@ FALCON_DIAGNOSTIC_POP
     inline constexpr type name{};                  \
   }
 #else
-# if __cplusplus >= FALCON_CXX_STD_11
+# if FALCON_CXX_CPLUSPLUS >= FALCON_CXX_STD_11
 namespace falcon { namespace detail {
   template<class T> struct static_const { static constexpr T value{}; };
   template<class T> constexpr T static_const<T>::value;
