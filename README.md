@@ -10,6 +10,7 @@
 - https://gcc.gnu.org/onlinedocs/gcc/Common-Variable-Attributes.html#Common-Variable-Attributes
 - https://gcc.gnu.org/onlinedocs/gcc/Common-Function-Attributes.html
 - https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Extensions.html#C_002b_002b-Extensions
+- https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
 
 
 ## Macros
@@ -24,6 +25,7 @@ FALCON_CXX_STD_14 // 201402L
 FALCON_CXX_CPLUSPLUS // __cplusplus (note: `FALCON_CXX_STD_*` with MSVC)
 
 FALCON_CXX_STD_VERSION // 03, 11, 14 or 17
+
 
 // Keywords
 
@@ -53,8 +55,17 @@ FALCON_HAS_INCLUDE_NEXT(filename) // `__has_include(filename)`
 FALCON_PRAGMA(X) // `_Pragma(#X)`
 
 // To provide the compiler with branch prediction information
-FALCON_LIKELY(X)
-FALCON_UNLIKELY(X)
+FALCON_LIKELY(condition)
+FALCON_UNLIKELY(condition)
+
+
+// Control flow
+
+// If control flow reaches the point, the program is undefined.
+// It is useful in situations where the compiler cannot deduce the unreachability of the code.
+// see https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html at __builtin_unreachable
+FALCON_UNREACHABLE()
+FALCON_UNREACHABLE_IF(condition)
 
 
 // Syntax

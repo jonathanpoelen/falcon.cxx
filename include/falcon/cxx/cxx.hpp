@@ -671,19 +671,40 @@ SOFTWARE.
 // Keywords and Syntax
 //@{
 
+#ifndef NDEBUG
+# define FALCON_UNREACHABLE() assert(!"Unreachable code reached.")
+# define FALCON_UNREACHABLE_IF(condition) \
+  assert((condition) && "Unreachable code reached.")
+#else
+# define FALCON_UNREACHABLE_IF(condition) \
+  do { if (condition) FALCON_UNREACHABLE(); } while (0)
+#endif
+
 #if defined(__clang__) || defined(__GNUC__)
-# define FALCON_LIKELY(x) __builtin_expect(!!(x), 1)
-# define FALCON_UNLIKELY(x) __builtin_expect(!!(x), 0)
+// https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
+# define FALCON_LIKELY(condition) __builtin_expect(bool(condition), 1)
+# define FALCON_UNLIKELY(condition) __builtin_expect(bool(condition), 0)
+# ifndef FALCON_UNREACHABLE
+#  define FALCON_UNREACHABLE() __builtin_unreachable()
+# endif
 # define FALCON_ALWAYS_INLINE __attribute__((always_inline))
 #else
-# define FALCON_LIKELY(x) (x)
-# define FALCON_UNLIKELY(x) (x)
-# ifdef _MSC_VER
+# define FALCON_LIKELY(condition) (condition)
+# define FALCON_UNLIKELY(condition) (condition)
+# ifdef _MSC_VER && _MSC_VER >= 1900
+#  if defined FALCON_UNREACHABLE && _MSC_VER >= 1900
+#   define FALCON_UNREACHABLE() __assume(0)
+#  endif
 #  define FALCON_ALWAYS_INLINE __forceinline
 # else
 #  define FALCON_ALWAYS_INLINE
 # endif
 #endif
+
+#ifndef FALCON_UNREACHABLE
+# define FALCON_UNREACHABLE() do { } while (0)
+#endif
+
 
 // C++14 constexpr functions are inline in C++11
 #if FALCON_CXX_CPLUSPLUS >= FALCON_CXX_STD_14
