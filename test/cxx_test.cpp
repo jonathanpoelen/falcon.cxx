@@ -6,12 +6,17 @@
 #include "falcon/cxx/move.hpp"
 
 template<class... T>
-void foo(T... x)
+constexpr int foo(T... x)
 {
   static_assert(noexcept(FALCON_UNPACK(x+1)), "must be noexcept");
+  int sum = 0;
+  FALCON_UNPACK(sum += x);
+  return sum;
 }
+
+template<int i> class i_{};
 
 int main()
 {
-  foo(1, 2);
+  i_<foo(1, 2)>{};
 }
