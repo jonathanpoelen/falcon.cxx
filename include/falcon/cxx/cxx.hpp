@@ -687,8 +687,8 @@ SOFTWARE.
 # define FALCON_LIKELY(condition) __builtin_expect(bool(condition), 1)
 # define FALCON_UNLIKELY(condition) __builtin_expect(bool(condition), 0)
 # if !defined(FALCON_UNREACHABLE) \
-  && ( FALCON_COMP_GNUC_DETECTION >= FALCON_VERSION_NUMBER(4, 5, 0) \
-    || FALCON_COMP_CLANG_AVAILABLE)
+  && ( FALCON_COMP_GNUC >= FALCON_VERSION_NUMBER(4, 5, 0) \
+    || defined(__clang__))
 #  define FALCON_UNREACHABLE() __builtin_unreachable()
 # endif
 # define FALCON_ALWAYS_INLINE __attribute__((always_inline))

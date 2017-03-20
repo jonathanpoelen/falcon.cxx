@@ -93,6 +93,14 @@ FALCON_IN_IDE_PARSER_CONDITIONAL(in_ide_expr, not_ide_expr)
 FALCON_PP_NIL
 
 
+// Compiler
+
+FALCON_VERSION_NUMBER(major, minor, patch)
+FALCON_COMP_CLANG BOOST_COMP_CLANG // 0 in not available
+FALCON_COMP_GNUC BOOST_COMP_GNUC // 0 in not available
+FALCON_COMP_MSVC BOOST_COMP_MSVC // 0 in not available
+
+
 // Diagnostic
 
 FALCON_DIAGNOSTIC_PUSH
