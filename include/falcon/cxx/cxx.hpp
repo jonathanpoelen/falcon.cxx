@@ -30,6 +30,8 @@ SOFTWARE.
 #pragma once
 
 
+#include <falcon/cxx/compiler_version.hpp>
+
 #define FALCON_CXX_STD_03 199711L // 1998/2003
 #define FALCON_CXX_STD_11 201103L
 #define FALCON_CXX_STD_14 201402L
@@ -447,7 +449,7 @@ SOFTWARE.
 #  if FALCON_HAS_CPP_ATTRIBUTE_DEPRECATED
 #   define FALCON_ATTRIBUTE_DEPRECATED [[deprecated]]
 #   define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg) [[deprecated(msg)]]
-#  elif defined(__clang__) || defined(__GNUC__)
+#  elif defined(__GNUC__) || defined(__clang__)
 #   define FALCON_ATTRIBUTE_DEPRECATED __attribute__((deprecated("deprecated")))
 #   define FALCON_ATTRIBUTE_DEPRECATED_MSG(msg) __attribute__((deprecated(msg)))
 #  elif defined(_MSC_VER)
@@ -497,7 +499,7 @@ SOFTWARE.
 #ifndef FALCON_ATTRIBUTE_NODISCARD
 # if FALCON_HAS_CPP_ATTRIBUTE_NODISCARD
 #  define FALCON_ATTRIBUTE_NODISCARD [[nodiscard]]
-# elif defined(__clang__) || defined(__GNUC__)
+# elif defined(__GNUC__) || defined(__clang__)
 #  define FALCON_ATTRIBUTE_NODISCARD __attribute__((warn_unused_result))
 # elif defined(_MSC_VER)
 #  define FALCON_ATTRIBUTE_NODISCARD _Check_return_
@@ -518,7 +520,7 @@ SOFTWARE.
 #ifndef FALCON_ATTRIBUTE_MAYBE_UNUSED
 # if FALCON_HAS_CPP_ATTRIBUTE_MAYBE_UNUSED
 #  define FALCON_ATTRIBUTE_MAYBE_UNUSED [[maybe_unused]]
-# elif defined(__clang__) || defined(__GNUC__)
+# elif defined(__GNUC__) || defined(__clang__)
 #  define FALCON_ATTRIBUTE_MAYBE_UNUSED __attribute__((unused))
 # else
 #  define FALCON_ATTRIBUTE_MAYBE_UNUSED
@@ -537,7 +539,7 @@ SOFTWARE.
 #ifndef FALCON_ATTRIBUTE_NORETURN
 # if FALCON_HAS_CPP_ATTRIBUTE_NORETURN
 #  define FALCON_ATTRIBUTE_NORETURN [[noreturn]]
-# elif defined(__clang__) || defined(__GNUC__)
+# elif defined(__GNUC__) || defined(__clang__)
 #  define FALCON_ATTRIBUTE_NORETURN __attribute__((noreturn))
 # elif defined(_MSC_VER)
 #  define FALCON_ATTRIBUTE_NORETURN __declspec(noreturn)
@@ -680,11 +682,13 @@ SOFTWARE.
   do { if (condition) FALCON_UNREACHABLE(); } while (0)
 #endif
 
-#if defined(__clang__) || defined(__GNUC__)
+#if defined(__GNUC__) || defined(__clang__)
 // https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html
 # define FALCON_LIKELY(condition) __builtin_expect(bool(condition), 1)
 # define FALCON_UNLIKELY(condition) __builtin_expect(bool(condition), 0)
-# ifndef FALCON_UNREACHABLE
+# if !defined(FALCON_UNREACHABLE) \
+  && ( FALCON_COMP_GNUC_DETECTION >= FALCON_VERSION_NUMBER(4, 5, 0) \
+    || FALCON_COMP_CLANG_AVAILABLE)
 #  define FALCON_UNREACHABLE() __builtin_unreachable()
 # endif
 # define FALCON_ALWAYS_INLINE __attribute__((always_inline))
