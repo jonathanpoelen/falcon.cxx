@@ -696,7 +696,7 @@ SOFTWARE.
 # define FALCON_LIKELY(condition) (condition)
 # define FALCON_UNLIKELY(condition) (condition)
 # ifdef _MSC_VER && _MSC_VER >= 1900
-#  if defined FALCON_UNREACHABLE && _MSC_VER >= 1900
+#  if !defined FALCON_UNREACHABLE && _MSC_VER >= 1900
 #   define FALCON_UNREACHABLE() __assume(0)
 #  endif
 #  define FALCON_ALWAYS_INLINE __forceinline
