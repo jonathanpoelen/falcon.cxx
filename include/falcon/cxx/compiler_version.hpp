@@ -29,7 +29,7 @@ SOFTWARE.
 
 #pragma once
 
-#if defined FALCON_USE_FALCON_PREDEF && FALCON_USE_FALCON_PREDEF == 1
+#if defined FALCON_USE_BOOST_PREDEF
 
 #include <boost/predef/compiler.h>
 
@@ -114,4 +114,4 @@ SOFTWARE.
 # define FALCON_COMP_MSVC FALCON_VERSION_NUMBER_NOT_AVAILABLE
 #endif
 
-#endif // FALCON_USE_FALCON_PREDEF
+#endif // FALCON_USE_BOOST_PREDEF
