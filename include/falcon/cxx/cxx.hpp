@@ -711,12 +711,14 @@ SOFTWARE.
 
 
 // C++14 constexpr functions are inline in C++11
-#if FALCON_CXX_CPLUSPLUS >= FALCON_CXX_STD_14
-# define FALCON_CXX14_CONSTEXPR constexpr
-# define FALCON_CONSTEXPR_AFTER_CXX11 constexpr
-#else
+
+#if FALCON_CXX_CPLUSPLUS < FALCON_CXX_STD_14 \
+ || (defined _MSC_VER && _MSC_VER <= 1900)
 # define FALCON_CXX14_CONSTEXPR inline
 # define FALCON_CONSTEXPR_AFTER_CXX11
+#else
+# define FALCON_CXX14_CONSTEXPR constexpr
+# define FALCON_CONSTEXPR_AFTER_CXX11 constexpr
 #endif
 
 #if FALCON_CXX_CPLUSPLUS > FALCON_CXX_STD_14
