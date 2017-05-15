@@ -7,7 +7,7 @@
 #include "falcon/cxx/move.hpp"
 
 template<class... T>
-constexpr int foo(T... x)
+FALCON_CONSTEXPR int foo(T... x)
 {
   static_assert(noexcept(FALCON_UNPACK(x+1)), "must be noexcept");
   int sum = 0;
@@ -19,5 +19,9 @@ template<int i> class i_{};
 
 int main()
 {
+#if FALCON_COMP_MSVC
   i_<foo(1, 2)>{};
+#else
+  if (foo(1, 2) != 3) throw 1;
+#endif
 }
